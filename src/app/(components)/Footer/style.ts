@@ -9,6 +9,7 @@ export const Footer = styled.footer`
     align-items: center;
     justify-content: center;
     gap: 15px;
+    letter-spacing: 1px;
 `
 
 export const LogosBox = styled.div`

@@ -10,7 +10,7 @@ function Footer() {
         <p> Desenvolvido única e exclusivamente para fins Acadêmicos. </p>
         <p> By Guilherme Tavares</p>
         <s.LogosBox>
-            <Link href=""> 
+            <Link href="https://www.instagram.com/gui_tvrs/" target='_blank'> 
                 <FaInstagram size={30}/> 
             </Link>
             <Link href=""> 
