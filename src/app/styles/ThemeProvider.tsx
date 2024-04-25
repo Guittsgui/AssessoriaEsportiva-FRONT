@@ -3,11 +3,13 @@
 
 
 export const Theme = {
-    main: "#4c3687",
-    main2: "#5e4699",
-    main3: "#7057ac",
-    main4: "#8267be",
-    main5: "#9477d0",
-    mainlighter: "#ddd6f0",
+    main: "#375e99",
+    main1: "#4a7ac3",
+    main2: "#219cd0",
+    main3: "#58c2d6",
+    main4: "#9be3db",
+    main5: "#d2fae2",
+    mainlighter: "#f4fdf7",
+    hightlight: "orange",
     danger: "#a00f06"
 }

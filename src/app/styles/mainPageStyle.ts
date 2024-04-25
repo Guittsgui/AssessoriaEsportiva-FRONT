@@ -36,7 +36,8 @@ export const NumbersBanner = styled.div`
         span{
             font-size: 60px;
             font-weight: bolder;
-            color: ${({theme}) => theme.main}
+            color: ${({theme}) => theme.main4};
+            text-shadow: 2px 2px 2px gray;
         }
     }
    
@@ -64,8 +65,9 @@ export const NewsLetterBanner = styled.div`
         justify-content: center;
         flex-direction: column;
         padding: 50px;
+        gap: 10px;
         h4{
-            font-size: 23px;
+            font-size: 25px;
             font-style:italic;
             color: ${({theme}) => theme.main}
             
@@ -80,24 +82,26 @@ export const NewsLetterBanner = styled.div`
         justify-content: center;
         flex-direction: column;
         padding: 50px;
-        gap: 20px;
+        gap: 30px;
 
         input{
-            height: 40px;
+            height: 50px;
             border: none;
             border-bottom: 1px solid gray;
             padding-bottom: 10px;
             padding-left: 20px;
             outline: none;
+            font-size: 18px;
         }
         button{
-            height: 40px;
+            height: 50px;
             border: none;
             background-color: transparent;
             border-bottom: 1px solid gray;
             text-align: initial; 
             padding-left: 20px;
             color: gray;
+            font-size: 18px;
             &:hover{
                 color: ${({theme}) => theme.main};
                 border-bottom: 2px solid;

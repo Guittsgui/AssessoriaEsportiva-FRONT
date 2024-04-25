@@ -54,19 +54,19 @@ export default function Home() {
 
         <s.ImageBanner2/>
         <s.NumbersBanner>
-          <h2>A maior Assessoria de Esportes do Brasil.</h2>
+          <h2>A maior Assessoria de Esportes do Brasil</h2>
           <div className="infos">
             <p className="fp"> Faça parte <br/> Desses Números</p>
             <div>
-              <span> + 300 </span>
+              <span> +300 </span>
               <p>Pódios</p> 
             </div>
             <div>
-              <span> + 47 </span>
+              <span> +47 </span>
               <p>Classificações para o IM 70.3 WC</p> 
             </div>
             <div>
-              <span> + 20 </span>
+              <span> +20 </span>
               <p>Classificações para o IM WC Kona</p> 
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function Home() {
 
 
         <s.TalkWithUsBanner>
-          <h2> Alguma Dúvida? Fale Conosco: </h2>
+          <h2> Fale Conosco: </h2>
           <Form onSubmit={handleSubmit(handleSubmitForm)}>
             <FormFieldBox >
               <Input placeholder="Informe seu Nome" 

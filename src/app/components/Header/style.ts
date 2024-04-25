@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Header = styled.header`
     height: 100px;
-    background: rgb(164,75,246);
-    background: linear-gradient(90deg, rgba(164,75,246,1) 0%, rgba(44,20,102,1) 100%);
+    background: rgb(55,94,153);
+background: linear-gradient(90deg, rgba(55,94,153,1) 0%, rgba(33,156,208,1) 43%, rgba(155,227,219,1) 100%);
     color: white;
 
     display: flex;
@@ -16,7 +16,6 @@ export const Header = styled.header`
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 40px;
         border-right: 1px solid black;
     }
     nav{
@@ -35,7 +34,7 @@ export const Header = styled.header`
                 opacity: 80%;
                 border-bottom: 2px solid black;
                 padding-bottom: 5px;
-                border-color: ${({theme}) => theme.main};
+                border-color: ${({theme}) => theme.hightlight};
 
             }
         }
@@ -54,7 +53,7 @@ export const Header = styled.header`
                 opacity: 80%;
                 border-bottom: 2px solid black;
                 padding-bottom: 5px;
-                border-color: ${({theme}) => theme.main};
+                border-color: ${({theme}) => theme.hightlight};
 
             }
         }
