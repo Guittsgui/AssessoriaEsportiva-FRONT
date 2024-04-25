@@ -11,6 +11,8 @@ export const PageContainer = styled.div`
     h1{
         border-bottom: 2px solid black;
         padding-bottom: 5px;
+        color: ${({theme}) => theme.main};
+        border-color: ${({theme}) => theme.main};
     }
     
 `

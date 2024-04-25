@@ -11,8 +11,8 @@ function Header() {
         </div>
         <nav>
             <Link href="/OurPlans"> Nossos Planos </Link>
-            <Link href=""> Loja Virtual </Link>
-            <Link href="">Área do Atleta</Link>
+            <Link href="/VirtualStore"> Loja Virtual </Link>
+            <Link href="/Login">Área do Atleta</Link>
         </nav>
         <div className="LoginArea">
             <Link href="/Login"> Login </Link>

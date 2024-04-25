@@ -8,20 +8,10 @@ export const Container = styled.div`
         padding-left: 15px;
     }
     p{
-        color: red;
+        color: ${props => props.theme.danger};
         font-weight: bolder;
         font-size: 12px;
         padding-left: 20px;
-    }
-
-    textarea{
-        resize: none;
-        outline: none;
-        width: 400px;
-        height: 200px;
-        border-radius: 20px;
-        box-shadow: 1px 1px 1px gray;
-        padding: 15px;
     }
 
     div{

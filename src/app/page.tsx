@@ -3,6 +3,7 @@ import QuestionContainer from './components/QuestionContainer';
 import * as s from './styles/styled'
 import { homePageQuestions } from './utils/homeQuestions';
 import { Input } from './components/input';
+import { TextArea } from './components/textArea';
 import { Button } from './components/button';
 import FormFieldBox from './components/FormFieldBox';
 import z from 'zod'
@@ -35,7 +36,7 @@ export default function Home() {
         <h1> Testando </h1>
 
         <s.TalkWithUsBanner>
-          <h2> Fale Conosco: </h2>
+          <h2> Alguma Dúvida? Fale Conosco: </h2>
           <Form onSubmit={handleSubmit(handleSubmitForm)}>
             <FormFieldBox >
               <Input placeholder="Informe seu Nome" 
@@ -66,14 +67,14 @@ export default function Home() {
             </FormFieldBox>
 
             <FormFieldBox>
-              <textarea placeholder="Insira sua Mensagem:" 
+              <TextArea placeholder="Insira sua Mensagem:" 
                 {...register('messageBody')}
-                />
+                hasErrors={errors.messageBody}/>
               <div>
                 {errors.messageBody?.message && <p> {errors.messageBody?.message}</p>}
               </div>
             </FormFieldBox>
-            <Button type='submit'> Enviar </Button>
+            <Button type='submit'> Enviar Email </Button>
 
           </Form>
         </s.TalkWithUsBanner>

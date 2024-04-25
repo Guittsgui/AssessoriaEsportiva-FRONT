@@ -9,18 +9,19 @@ export const Container = styled.div<props>`
     min-height: 50px;
     color: white;
     margin-bottom: 30px;
-    p{
-        font-size: 20px;
-    }
+    box-shadow: 3px 3px 3px lightgray;
     
     .QuestionBox{
-        color: black;
-        border: 2px solid black;
-        padding: 10px;
+        color: ${({theme}) => theme.main};
+        border: 2px solid ;
+        border-color: ${({theme}) => theme.main};
+        padding: 10px 50px;
         height: 70px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        font-size: 20px;
+        
         cursor: pointer;
         &:hover{
             opacity: 70%;
@@ -32,12 +33,14 @@ export const Container = styled.div<props>`
         }
     }
     .AnswerBox{
-        color:black;
+        color: black;
+        font-size: 18px;
         min-height: 50px;
-        background-color: lightgray;
+        background-color: ${({theme})=> theme.mainlighter};
         padding: 20px;
         display: ${props => props.showAnswer ? 'flex' : 'none'};
-        border: 2px solid black;
+        border: 2px solid ;
+        border-color: ${({theme}) => theme.main};
         border-top: none;
     }
 `

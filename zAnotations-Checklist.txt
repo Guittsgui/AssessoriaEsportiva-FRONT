@@ -1,15 +1,21 @@
 TODO-LIST- Quinta Feira. 
 
-1- Procurar Paletas de Cores + Ideias Layout + setar no Pré 
-3- Criar um formBox para os três já existentes e não um para cada.
 4- Refatorar esses Banners. Da para ter um só Genérico. ?? 
 5- Finalizar o Layout página Inicial.
+
+
+////
 6- Criar um ContextAPI para usuário Logado/Login.
 7- Criar pasta API para Requisicoes.
 8- Criar mini sistema de Envio de Email. (Usuário + Box Sender)
+
+
+////
 9- BACK - Criar Projeto do BackEnd no gitHub e subir.
 10- BACK -  Configurar Prisma + Tabela Usuário.
 11-  BACK - Criar rotas iniciais da API.
+
+////
 12- Criar menu Dropdown "Minha Conta" - Sair, Configuracoes, etc.
 __________________________________________________________________________________________
 
