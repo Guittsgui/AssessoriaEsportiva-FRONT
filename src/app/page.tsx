@@ -13,6 +13,8 @@ import { Form } from './components/UI/form';
 import { AiTwotoneMail } from "react-icons/ai";
 import { FormEvent, useState } from 'react';
 import { isEmailValid } from './utils/isEmailValid';
+import Link from 'next/link'
+
 
 export default function Home() {
 
@@ -29,6 +31,8 @@ export default function Home() {
   const {handleSubmit, register, formState: {errors}, reset} = useForm<emailMessage>({
     resolver: zodResolver(talkWithUsFormSchema)
   });
+
+  
 
   function handleSubmitForm(data: emailMessage){
     alert('passou' + data.name)
@@ -53,6 +57,21 @@ export default function Home() {
 
 
         <s.ImageBanner2/>
+
+        <s.WhoWeAre>
+          <div className="leftSide">
+            <div className="textArea"> 
+              <h2>Somos a TRIsportS Assessoria</h2>
+              <p>Uma empresa feita por profissionais honestos, de gente que acredita e vive o esporte. Aqui você encontrará o melhor caminho para trilhar sua trajetória no mundo dos esportes de Endurance. Seja bem vindo.</p>
+              <span> Se você acredita nisso também, é só chegar!</span>
+            </div>
+          </div>
+          <div className="rightSide">
+            <div className="imageBox">
+            </div>
+          </div>
+        </s.WhoWeAre>
+
         <s.NumbersBanner>
           <h2>A maior Assessoria de Esportes do Brasil</h2>
           <div className="infos">
@@ -72,6 +91,12 @@ export default function Home() {
           </div>
         </s.NumbersBanner>
 
+        <s.ImageBanner1/>
+
+        <s.OurSports>
+          <h2> Nossos Esportes </h2>
+        </s.OurSports>
+
         <s.NewsLetterBanner>
           <div className="title">
              <h4>Dicas para o treinamento de endurance</h4>
@@ -87,6 +112,7 @@ export default function Home() {
           </form>
         </s.NewsLetterBanner>
 
+
         <s.FaqBanner>
           <h2> FAQ`s </h2>          
           {homePageQuestions.map((item, index)=> (
@@ -95,11 +121,13 @@ export default function Home() {
                key={index}/>
           ))}
         </s.FaqBanner>
+        
+        <s.OurPlans>
+          <h2>PLANOS ASSESSORIA ESPORTIVA</h2>
+          <p> Conheca os Planos da TRISports Assessoria Esoprtiva que atende a diversas modalidades diferentes, no formato presencial ou remoto. çaca parte do time TRISports, a maior e mais completa assessoria do Brasil.</p>
+          <Link href="/OurPlans"> VER NOSSOS PLANOS </Link>
 
-        <s.ImageBanner1/>
-
-
-
+        </s.OurPlans>
 
         <s.TalkWithUsBanner>
           <h2> Fale Conosco: </h2>

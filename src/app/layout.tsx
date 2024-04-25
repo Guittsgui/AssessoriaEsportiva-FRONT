@@ -2,8 +2,8 @@
 import { Inter } from "next/font/google";
 import "./styles/globals.css";
 import StyledComponentsRegistry from "./registry";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/Layout/Header";
+import Footer from "./components/Layout/Footer";
 import { ThemeProvider } from "styled-components";
 import { Theme } from './styles/ThemeProvider';
 

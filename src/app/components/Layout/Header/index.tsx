@@ -2,7 +2,7 @@ import Link from 'next/link'
 import * as s from './style'
 
 import React from 'react'
-import Logo from '../UI/Logo'
+import Logo from '../../UI/Logo'
 
 function Header() {
   return (

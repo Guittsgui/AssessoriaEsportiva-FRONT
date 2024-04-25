@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Header = styled.header`
     height: 100px;
     background: rgb(55,94,153);
-background: linear-gradient(90deg, rgba(55,94,153,1) 0%, rgba(33,156,208,1) 43%, rgba(155,227,219,1) 100%);
+    background: linear-gradient(90deg, rgba(55,94,153,1) 0%, rgba(33,156,208,1) 43%, rgba(155,227,219,1) 100%);
     color: white;
 
     display: flex;
