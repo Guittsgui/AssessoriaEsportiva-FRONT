@@ -10,7 +10,7 @@ function Header() {
             <Link href="/"> LOGO </Link>
         </div>
         <nav>
-            <Link href=""> Nossos Planos </Link>
+            <Link href="/OurPlans"> Nossos Planos </Link>
             <Link href=""> Loja Virtual </Link>
             <Link href="">Área do Atleta</Link>
         </nav>

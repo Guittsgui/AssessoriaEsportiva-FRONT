@@ -13,3 +13,10 @@ TODO-LIST- Quinta Feira.
 12- Criar menu Dropdown "Minha Conta" - Sair, Configuracoes, etc.
 __________________________________________________________________________________________
 
+////IDEIAS FUTURAS:
+
+- ACADEMY- CURSOS.
+- BLOG - Posts/ Novidades.
+- NewsLetter - Email: Salvar.
+- API (tempo?)
+- 

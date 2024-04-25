@@ -1,14 +1,14 @@
 "use client"
-import QuestionContainer from './(components)/QuestionContainer';
-import * as s from './styled'
-import { homePageQuestions } from './(utils)/homeQuestions';
-import { Input } from './(components)/input';
-import { Button } from './(components)/button';
-import FormFieldBox from './(components)/FormFieldBox';
+import QuestionContainer from './components/QuestionContainer';
+import * as s from './styles/styled'
+import { homePageQuestions } from './utils/homeQuestions';
+import { Input } from './components/input';
+import { Button } from './components/button';
+import FormFieldBox from './components/FormFieldBox';
 import z from 'zod'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Form } from './(components)/form';
+import { Form } from './components/form';
 
 export default function Home() {
 

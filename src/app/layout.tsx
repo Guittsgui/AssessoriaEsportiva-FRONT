@@ -1,11 +1,11 @@
 "use client"
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./styles/globals.css";
 import StyledComponentsRegistry from "./registry";
-import Header from "./(components)/Header";
-import Footer from "./(components)/Footer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { ThemeProvider } from "styled-components";
-import { Theme } from './(providers)/ThemeProvider';
+import { Theme } from './styles/ThemeProvider';
 
 const inter = Inter({ subsets: ["latin"] });
 
