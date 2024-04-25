@@ -182,6 +182,21 @@ export const NewsLetterBanner = styled.div`
                 font-weight: bolder;
             }
         }
+        .errorBox{
+            margin: 0px;
+            padding: 0px;
+            height: 40px;
+            width: 100%;
+            display:flex;
+            p{
+                margin: 0px;
+                padding: 0px;
+                font-size: 15px;
+                font-weight: bolder;
+                color: ${({theme}) => theme.danger};
+                padding-left: 20px;
+            }
+        }
     }
 
 `

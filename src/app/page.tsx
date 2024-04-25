@@ -20,7 +20,8 @@ export default function Home() {
 
   type emailMessage = z.infer<typeof talkWithUsFormSchema>
 
-  const [emailNewsLetter , setEmailNewsLetter] = useState<string>('');
+  const [emailNewsLetter , setEmailNewsLetter] = useState('');
+  const [newsLetterErrorMessage, setNewsLetterErrorMessage] = useState(false)
 
   const talkWithUsFormSchema = z.object({
     name: z.string().min(1 , "Nome Obrigatório"),
@@ -42,8 +43,10 @@ export default function Home() {
 
   function handleSubmitNewsLetterForm(e: FormEvent){
     e.preventDefault();
+    setNewsLetterErrorMessage(false);
     if(!isEmailValid(emailNewsLetter)){
       setEmailNewsLetter('')
+      setNewsLetterErrorMessage(true);
       return
     }else{
       alert("é valido")
@@ -109,6 +112,9 @@ export default function Home() {
                onChange={(e) => setEmailNewsLetter(e.target.value)}>
             </input>
             <button type='submit'>ENVIAR</button>
+            <div className='errorBox'>
+              {newsLetterErrorMessage && <p> Insira um Email Válido </p> }
+            </div>
           </form>
         </s.NewsLetterBanner>
 
@@ -121,7 +127,7 @@ export default function Home() {
                key={index}/>
           ))}
         </s.FaqBanner>
-        
+
         <s.OurPlans>
           <h2>PLANOS ASSESSORIA ESPORTIVA</h2>
           <p> Conheca os Planos da TRISports Assessoria Esoprtiva que atende a diversas modalidades diferentes, no formato presencial ou remoto. çaca parte do time TRISports, a maior e mais completa assessoria do Brasil.</p>
