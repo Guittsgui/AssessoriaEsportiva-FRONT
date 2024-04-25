@@ -10,10 +10,15 @@ import z from 'zod'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from './components/UI/form';
+import { AiTwotoneMail } from "react-icons/ai";
+import { FormEvent, useState } from 'react';
+import { isEmailValid } from './utils/isEmailValid';
 
 export default function Home() {
 
   type emailMessage = z.infer<typeof talkWithUsFormSchema>
+
+  const [emailNewsLetter , setEmailNewsLetter] = useState<string>('');
 
   const talkWithUsFormSchema = z.object({
     name: z.string().min(1 , "Nome Obrigatório"),
@@ -31,12 +36,24 @@ export default function Home() {
     reset();
   }
 
+  function handleSubmitNewsLetterForm(e: FormEvent){
+    e.preventDefault();
+    if(!isEmailValid(emailNewsLetter)){
+      setEmailNewsLetter('')
+      return
+    }else{
+      alert("é valido")
+      setEmailNewsLetter('')
+    }
+
+  }
+
   return (
       <s.Container>
 
 
         <s.ImageBanner2/>
-        <s.WelcomeBanner>
+        <s.NumbersBanner>
           <h2>A maior Assessoria de Esportes do Brasil.</h2>
           <div className="infos">
             <p className="fp"> Faça parte <br/> Desses Números</p>
@@ -53,7 +70,22 @@ export default function Home() {
               <p>Classificações para o IM WC Kona</p> 
             </div>
           </div>
-        </s.WelcomeBanner>
+        </s.NumbersBanner>
+
+        <s.NewsLetterBanner>
+          <div className="title">
+             <h4>Dicas para o treinamento de endurance</h4>
+             <p>Inscreva-se na nossa newsletter e receba em primeira mão o nosso conteúdo e informações de nossos cursos por e-mail.</p>
+             <AiTwotoneMail size={50} color="red"/>
+          </div>
+          <form onSubmit={handleSubmitNewsLetterForm}>
+            <input placeholder="EMAIL" value={emailNewsLetter}
+              type='email'
+               onChange={(e) => setEmailNewsLetter(e.target.value)}>
+            </input>
+            <button type='submit'>ENVIAR</button>
+          </form>
+        </s.NewsLetterBanner>
 
         <s.FaqBanner>
           <h2> FAQ`s </h2>          
@@ -65,6 +97,9 @@ export default function Home() {
         </s.FaqBanner>
 
         <s.ImageBanner1/>
+
+
+
 
         <s.TalkWithUsBanner>
           <h2> Alguma Dúvida? Fale Conosco: </h2>

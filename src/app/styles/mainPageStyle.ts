@@ -7,7 +7,7 @@ export const Container = styled.div`
     flex-direction: column;
 `
 
-export const WelcomeBanner = styled.div`
+export const NumbersBanner = styled.div`
     height: 300px;
     padding: 10px;
     width: 100%;
@@ -49,6 +49,66 @@ export const WelcomeBanner = styled.div`
 
 `
 
+export const NewsLetterBanner = styled.div`
+    height: 220px;
+    width: 100%;
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+    border-color: ${({theme}) => theme.main};
+    display: flex;
+    padding: 20px;
+
+    div{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 50px;
+        h4{
+            font-size: 23px;
+            font-style:italic;
+            color: ${({theme}) => theme.main}
+            
+        }
+        p{
+            font-size: 18px;
+        }
+    }
+    form{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 50px;
+        gap: 20px;
+
+        input{
+            height: 40px;
+            border: none;
+            border-bottom: 1px solid gray;
+            padding-bottom: 10px;
+            padding-left: 20px;
+            outline: none;
+        }
+        button{
+            height: 40px;
+            border: none;
+            background-color: transparent;
+            border-bottom: 1px solid gray;
+            text-align: initial; 
+            padding-left: 20px;
+            color: gray;
+            &:hover{
+                color: ${({theme}) => theme.main};
+                border-bottom: 2px solid;
+                border-color: ${({theme}) => theme.main};
+                font-weight: bolder;
+            }
+        }
+    }
+
+`
+
 export const TalkWithUsBanner = styled.div`
     h2{
         margin-bottom: 25px;
@@ -70,8 +130,6 @@ export const FaqBanner = styled.div`
         margin: 20px;
         font-size: 30px;
     }
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
     min-height: 500px;
     padding: 20px;
     width: 100%;
