@@ -14,6 +14,7 @@ import { AiTwotoneMail } from "react-icons/ai";
 import { FormEvent, useState } from 'react';
 import { isEmailValid } from './utils/isEmailValid';
 import Link from 'next/link'
+import { useToastMessage } from './hooks/useToastMessage';
 
 
 export default function Home() {
@@ -21,8 +22,7 @@ export default function Home() {
   type emailMessage = z.infer<typeof talkWithUsFormSchema>
 
   const [emailNewsLetter , setEmailNewsLetter] = useState('');
-  const [newsLetterErrorMessage, setNewsLetterErrorMessage] = useState(false)
-
+ 
   const talkWithUsFormSchema = z.object({
     name: z.string().min(1 , "Nome Obrigatório"),
     email: z.string().email("Insira um Email Válido").min(1, "Preencha este Campo"),
@@ -43,14 +43,15 @@ export default function Home() {
 
   function handleSubmitNewsLetterForm(e: FormEvent){
     e.preventDefault();
-    setNewsLetterErrorMessage(false);
     if(!isEmailValid(emailNewsLetter)){
       setEmailNewsLetter('')
-      setNewsLetterErrorMessage(true);
+
+      document.dispatchEvent(useToastMessage("Informe um Email válido", "error"));
+        
       return
     }else{
-      alert("é valido")
       setEmailNewsLetter('')
+      document.dispatchEvent(useToastMessage("Cadastrado com Sucessosss", "success"));
     }
 
   }
@@ -59,7 +60,7 @@ export default function Home() {
       <s.Container>
 
 
-        <s.ImageBanner2/>
+        <s.ImageBanner1/>
 
         <s.WhoWeAre>
           <div className="leftSide">
@@ -94,7 +95,7 @@ export default function Home() {
           </div>
         </s.NumbersBanner>
 
-        <s.ImageBanner1/>
+        <s.ImageBanner2/>
 
         <s.OurSports>
           <h2> Nossos Esportes </h2>
@@ -112,9 +113,6 @@ export default function Home() {
                onChange={(e) => setEmailNewsLetter(e.target.value)}>
             </input>
             <button type='submit'>ENVIAR</button>
-            <div className='errorBox'>
-              {newsLetterErrorMessage && <p> Insira um Email Válido </p> }
-            </div>
           </form>
         </s.NewsLetterBanner>
 

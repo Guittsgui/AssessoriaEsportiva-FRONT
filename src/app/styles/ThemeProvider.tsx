@@ -11,5 +11,6 @@ export const Theme = {
     main5: "#d2fae2",
     mainlighter: "#f4fdf7",
     hightlight: "orange",
-    danger: "#a00f06"
+    danger: "#a00f06",
+    success: "#90EE90"
 }

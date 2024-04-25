@@ -6,7 +6,14 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
 `
-
+export const ImageBanner1 = styled.div`
+    width: 100%;
+    height: 300px;
+    background-image: url('https://triathlon.org.br/wp-content/uploads/2024/02/cropped-rio-triathlon-banner-site-1200x400_2.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+`
 
 export const WhoWeAre = styled.div`
     height: 500px;
@@ -103,7 +110,7 @@ export const NumbersBanner = styled.div`
     }
 
 `
-export const ImageBanner1 = styled.div`
+export const ImageBanner2 = styled.div`
     width: 100%;
     height: 300px;
     background-image: url('https://as2.ftcdn.net/v2/jpg/01/19/90/91/1000_F_119909170_k1868D0DeAsr27ziUM9XfqOSwaTJRBf2.jpg');
@@ -121,8 +128,6 @@ export const OurSports = styled.div`
         color: ${({theme}) => theme.main}
     }
 `
-
-
 export const NewsLetterBanner = styled.div`
     height: 220px;
     width: 100%;
@@ -213,7 +218,6 @@ export const FaqBanner = styled.div`
     align-items: center;
     flex-direction: column;
 `
-
 export const OurPlans = styled.div`
     height: 300px;
     width: 100%;
@@ -249,7 +253,6 @@ export const OurPlans = styled.div`
         }
     }
 `
-
 export const TalkWithUsBanner = styled.div`
     h2{
         margin-bottom: 25px;
@@ -267,12 +270,3 @@ export const TalkWithUsBanner = styled.div`
     padding: 20px;
 `
 
-
-export const ImageBanner2 = styled.div`
-    width: 100%;
-    height: 300px;
-    background-image: url('https://triathlon.org.br/wp-content/uploads/2024/02/cropped-rio-triathlon-banner-site-1200x400_2.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-`

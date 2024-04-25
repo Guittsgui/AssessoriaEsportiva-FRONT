@@ -6,6 +6,7 @@ import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import { ThemeProvider } from "styled-components";
 import { Theme } from './styles/ThemeProvider';
+import ToastContainer from "./components/Toast/ToastContainer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
             <Header/>
               {children}
             <Footer/>
+            <ToastContainer/>
           </ThemeProvider>
         </body>
       </StyledComponentsRegistry>

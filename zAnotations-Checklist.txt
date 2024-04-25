@@ -1,13 +1,14 @@
 TODO-LIST- Quinta Feira. 
 
-4- Refatorar esses Banners. Da para ter um só Genérico. ?? 
+
 5- Finalizar o Layout página Inicial.
 
 
 ////
 6- Criar um ContextAPI para usuário Logado/Login.
 7- Criar pasta API para Requisicoes.
-8- Criar mini sistema de Envio de Email. (Usuário + Box Sender)
+-- ALTERAR ERROR MSG P/ TOAST.
+
 
 
 ////
