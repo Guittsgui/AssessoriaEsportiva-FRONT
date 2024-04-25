@@ -16,7 +16,7 @@ export default function Home() {
   const talkWithUsFormSchema = z.object({
     name: z.string().min(1 , "Nome Obrigatório"),
     email: z.string().email("Insira um Email Válido").min(1, "Preencha este Campo"),
-    tel: z.string().min(11, "Insira um telefone Válido"),
+    tel: z.string().min(11, "Campo Obrigatório"),
     messageBody: z.string().min(10, "Campo obrigatório - Min 10 caracteres.")
   })
   const {handleSubmit, register, formState: {errors}, reset} = useForm<emailMessage>({
@@ -36,20 +36,32 @@ export default function Home() {
         <s.TalkWithUsBanner>
           <h2> Fale Conosco: </h2>
           <s.Form onSubmit={handleSubmit(handleSubmitForm)}>
-            <FormFieldBox>
-              <Input placeholder="Informe seu Nome" {...register('name')}/>
+            <FormFieldBox >
+              <Input placeholder="Informe seu Nome" 
+                {...register('name')} 
+                hasErrors={errors.name}/>
               {errors.name?.message && <p> {errors.name?.message}</p>}
             </FormFieldBox>
+
             <FormFieldBox>
-              <Input placeholder="Informe seu Email: " {...register('email')}/>
+              <Input placeholder="Informe seu Email: " 
+                {...register('email')}
+                hasErrors={errors.email}/>
               {errors.email?.message && <p> {errors.email?.message}</p>}
             </FormFieldBox>
+
             <FormFieldBox>
-              <Input placeholder="Informe seu Telefone: " type="number" {...register('tel')}/>
+              <Input placeholder="Informe seu Telefone: " 
+                type="number" 
+                {...register('tel')}
+                hasErrors={errors.tel}/>
               {errors.tel?.message && <p> {errors.tel?.message}</p>}
             </FormFieldBox>
+
             <FormFieldBox>
-              <textarea placeholder="Insira sua Mensagem:" {...register('messageBody')}/>
+              <textarea placeholder="Insira sua Mensagem:" 
+                {...register('messageBody')}
+                />
               {errors.messageBody?.message && <p> {errors.messageBody?.message}</p>}
             </FormFieldBox>
             <Button type='submit'> Enviar </Button>
