@@ -5,7 +5,6 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 40px 0;
 `
 
 export const TalkWithUsBanner = styled.div`
@@ -38,9 +37,19 @@ export const FaqBanner = styled.div`
     align-items: center;
     flex-direction: column;
 `
-export const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+export const ImageBanner1 = styled.div`
+    width: 100%;
+    height: 300px;
+    background-image: url('https://thumbs.dreamstime.com/z/grupo-do-%C3%ADcone-do-triathlon-47854358.jpg');
+    background-position: center;
+    background-size: cover;
+`
+
+export const ImageBanner2 = styled.div`
+    width: 100%;
+    height: 300px;
+    background-image: url('https://triathlon.org.br/wp-content/uploads/2024/02/cropped-rio-triathlon-banner-site-1200x400_2.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 `

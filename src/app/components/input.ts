@@ -5,7 +5,7 @@ type props = {
 }
 
 export const Input = styled.input<props>`
-    width: 400px;
+    width: 450px;
     height: 35px;
     outline: none;
     border-radius: 20px;

@@ -1,6 +1,6 @@
 "use client"
 import QuestionContainer from './components/QuestionContainer';
-import * as s from './styles/styled'
+import * as s from './styles/mainPageStyle'
 import { homePageQuestions } from './utils/homeQuestions';
 import { Input } from './components/input';
 import { TextArea } from './components/textArea';
@@ -33,7 +33,20 @@ export default function Home() {
 
   return (
       <s.Container>
-        <h1> Testando </h1>
+
+
+        <s.ImageBanner2/>
+
+        <s.FaqBanner>
+          <h2> FAQ`s </h2>          
+          {homePageQuestions.map((item, index)=> (
+            <QuestionContainer question={item.question}
+               answer={item.answer}
+               key={index}/>
+          ))}
+        </s.FaqBanner>
+
+        <s.ImageBanner1/>
 
         <s.TalkWithUsBanner>
           <h2> Alguma Dúvida? Fale Conosco: </h2>
@@ -78,14 +91,7 @@ export default function Home() {
 
           </Form>
         </s.TalkWithUsBanner>
-        <s.FaqBanner>
-          <h2> FAQ`s </h2>          
-          {homePageQuestions.map((item, index)=> (
-            <QuestionContainer question={item.question}
-               answer={item.answer}
-               key={index}/>
-          ))}
-        </s.FaqBanner>
+
 
       </s.Container>
   );

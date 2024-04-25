@@ -7,7 +7,7 @@ type props = {
 export const TextArea = styled.textarea<props>`
         resize: none;
         outline: none;
-        width: 400px;
+        width: 450px;
         height: 200px;
         border-radius: 20px;
         box-shadow: 1px 1px 1px gray;
