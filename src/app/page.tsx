@@ -70,8 +70,10 @@ export default function Home() {
         </s.TalkWithUsBanner>
         <s.FaqBanner>
           <h2> FAQ`s </h2>          
-          {homePageQuestions.map(item => (
-            <QuestionContainer question={item.question} answer={item.answer}/>
+          {homePageQuestions.map((item, index)=> (
+            <QuestionContainer question={item.question}
+               answer={item.answer}
+               key={index}/>
           ))}
         </s.FaqBanner>
 
