@@ -7,6 +7,48 @@ export const Container = styled.div`
     flex-direction: column;
 `
 
+export const WelcomeBanner = styled.div`
+    height: 300px;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    gap: 40px;
+    font-size: 25px;
+    .fp{
+        font-weight: bolder;
+        text-decoration: underline;
+        font-style: italic;
+        color: ${({theme}) => theme.main}
+    }
+    .infos{
+        display: flex;
+        width: 100%;
+        gap: 50px;
+        justify-content: space-around;
+
+        div{
+            width: 200px;
+        }
+
+        span{
+            font-size: 60px;
+            font-weight: bolder;
+            color: ${({theme}) => theme.main}
+        }
+    }
+   
+
+    h2{ 
+        font-size: 35px;
+        margin-top: 30px;
+        color: ${({theme}) => theme.main}
+    }
+
+`
+
 export const TalkWithUsBanner = styled.div`
     h2{
         margin-bottom: 25px;
@@ -44,7 +86,6 @@ export const ImageBanner1 = styled.div`
     background-position: center;
     background-size: cover;
 `
-
 export const ImageBanner2 = styled.div`
     width: 100%;
     height: 300px;

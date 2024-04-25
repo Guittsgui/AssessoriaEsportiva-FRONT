@@ -2,14 +2,14 @@
 import QuestionContainer from './components/QuestionContainer';
 import * as s from './styles/mainPageStyle'
 import { homePageQuestions } from './utils/homeQuestions';
-import { Input } from './components/input';
-import { TextArea } from './components/textArea';
-import { Button } from './components/button';
+import { Input } from './components/UI/input';
+import { TextArea } from './components/UI/textArea';
+import { Button } from './components/UI/button';
 import FormFieldBox from './components/FormFieldBox';
 import z from 'zod'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Form } from './components/form';
+import { Form } from './components/UI/form';
 
 export default function Home() {
 
@@ -36,6 +36,24 @@ export default function Home() {
 
 
         <s.ImageBanner2/>
+        <s.WelcomeBanner>
+          <h2>A maior Assessoria de Esportes do Brasil.</h2>
+          <div className="infos">
+            <p className="fp"> Faça parte <br/> Desses Números</p>
+            <div>
+              <span> + 300 </span>
+              <p>Pódios</p> 
+            </div>
+            <div>
+              <span> + 47 </span>
+              <p>Classificações para o IM 70.3 WC</p> 
+            </div>
+            <div>
+              <span> + 20 </span>
+              <p>Classificações para o IM WC Kona</p> 
+            </div>
+          </div>
+        </s.WelcomeBanner>
 
         <s.FaqBanner>
           <h2> FAQ`s </h2>          

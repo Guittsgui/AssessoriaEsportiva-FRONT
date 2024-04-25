@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Header = styled.header`
     height: 100px;
-    border-bottom: 2px solid black;
-    background-color: ${props => props.theme.main3};
+    background: rgb(164,75,246);
+    background: linear-gradient(90deg, rgba(164,75,246,1) 0%, rgba(44,20,102,1) 100%);
     color: white;
 
     display: flex;

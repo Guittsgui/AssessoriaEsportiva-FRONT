@@ -4,12 +4,12 @@ import * as s from './style'
 
 
 import React from 'react'
-import { Input } from '@/app/components/input'
-import { Button } from '@/app/components/button'
+import { Input } from '@/app/components/UI/input'
+import { Button } from '@/app/components/UI/button'
 import z from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Form } from '@/app/components/form'
+import { Form } from '@/app/components/UI/form'
 
 function Register() {
 

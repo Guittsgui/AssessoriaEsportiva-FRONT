@@ -22,13 +22,14 @@ export const homePageQuestions: HomeQuestions[] = [
         answer: " Para planos de 01 ano você pode trancar por 30 dias. Para planos de 06 meses você pode trancar por 15 dias."
     },
     {
-        question: "Tenho algum período de adaptação na acessoria ?",
+        question: "Tenho algum período de adaptação na assessoria ?",
         answer: "Sim, a partir do momento da compra de seu plano, você possui 10 dias para nos conhecer e apenas depois tomar sua decisão definitiva, podendo optar pelo estorno caso necessário.",
     },
     {
         question: "Como funciona o meu contato com o treinador ?",
         answer: "Irá depender do plano escolhido, podendo ser via mensagens no site, ou até mesmo whatsapp particular do seu respectivo treinador.",
     },
+    
     
 
 ]
