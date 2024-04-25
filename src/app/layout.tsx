@@ -4,6 +4,8 @@ import "./globals.css";
 import StyledComponentsRegistry from "./registry";
 import Header from "./(components)/Header";
 import Footer from "./(components)/Footer";
+import { ThemeProvider } from "styled-components";
+import { Theme } from './(providers)/ThemeProvider';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <StyledComponentsRegistry>
         <body className={inter.className} suppressHydrationWarning={true}>
-          <Header/>
-          {children}
-          <Footer/>
+          <ThemeProvider theme={Theme}>
+            <Header/>
+              {children}
+            <Footer/>
+          </ThemeProvider>
         </body>
       </StyledComponentsRegistry>
     </html>

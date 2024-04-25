@@ -7,6 +7,8 @@ import { Button } from '@/app/(components)/button'
 import z from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Form } from '@/app/(components)/form'
+
 
 function Login() {
 
@@ -29,21 +31,29 @@ function Login() {
   return (
     <s.PageContainer>
         <h1> Login </h1>
-        <s.Form onSubmit={handleSubmit(handleSubmitLogin)}>
+        <Form onSubmit={handleSubmit(handleSubmitLogin)}>
+
           <FormFieldBox>
             <Input placeholder="Informe seu Email: "
              {...register('email')}
              hasErrors={errors.email}/>
-            {errors.email?.message && <p> {errors.email.message}</p> }
+             <div className="div">
+              {errors.email?.message && <p> {errors.email.message}</p> }
+             </div>
           </FormFieldBox>
+
           <FormFieldBox>
             <Input placeholder="informe sua Senha:"
               {...register('password')}
-              hasErrors={errors.password}/>
-            {errors.password?.message && <p>{errors.password.message}</p>}
+              hasErrors={errors.password}
+              type='password'/>
+            <div>
+              {errors.password?.message && <p>{errors.password.message}</p>}
+            </div>
           </FormFieldBox>
+
           <Button type='submit'> Logar </Button>
-        </s.Form>
+        </Form>
     </s.PageContainer>
   )
 }

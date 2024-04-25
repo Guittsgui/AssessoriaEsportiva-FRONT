@@ -9,6 +9,7 @@ import { Button } from '@/app/(components)/button'
 import z from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Form } from '@/app/(components)/form'
 
 function Register() {
 
@@ -35,37 +36,49 @@ function Register() {
   return (
     <s.PageContainer>
         <h1> Register </h1>
-        <s.Form onSubmit={handleSubmit(handleSubmitRegisterForm)}>
+        <Form onSubmit={handleSubmit(handleSubmitRegisterForm)}>
 
           <FormFieldBox>
             <Input placeholder='Informe seu Nome'
-              {...register('name')}/>
-            {errors.name?.message && <p> {errors.name.message}</p>}
+              {...register('name')}
+              hasErrors={errors.name}/>
+            <div>
+              {errors.name?.message && <p> {errors.name.message}</p>}
+            </div>
           </FormFieldBox>
 
           <FormFieldBox>
             <Input placeholder='Informe seu Email'
-              {...register('email')}/>
-            {errors.email?.message && <p> {errors.email.message}</p>}
+              {...register('email')}
+              hasErrors={errors.email}/>
+            <div>
+              {errors.email?.message && <p> {errors.email.message}</p>}
+            </div>
           </FormFieldBox>
 
           <FormFieldBox>
             <Input placeholder='Informe sua Senha:' 
               type='password'
-              {...register('password')}/>
-            {errors.password?.message && <p> {errors.password.message}</p>}
+              {...register('password')}
+              hasErrors={errors.password}/>
+            <div>
+              {errors.password?.message && <p> {errors.password.message}</p>}
+            </div>
           </FormFieldBox>
 
           <FormFieldBox>
             <Input placeholder='Confirme sua Senha:' 
               type='password'
-              {...register('confirmPassword')}/>
-            {errors.confirmPassword?.message && <p> {errors.confirmPassword.message}</p>}
+              {...register('confirmPassword')}
+              hasErrors={errors.confirmPassword}/>
+            <div>
+              {errors.confirmPassword?.message && <p> {errors.confirmPassword.message}</p>}
+            </div>
           </FormFieldBox>
 
           <Button type="submit"> Enviar </Button>
           
-        </s.Form>
+        </Form>
     </s.PageContainer>
   )
 }

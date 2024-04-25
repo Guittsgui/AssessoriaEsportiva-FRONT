@@ -8,6 +8,7 @@ import FormFieldBox from './(components)/FormFieldBox';
 import z from 'zod'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Form } from './(components)/form';
 
 export default function Home() {
 
@@ -35,19 +36,23 @@ export default function Home() {
 
         <s.TalkWithUsBanner>
           <h2> Fale Conosco: </h2>
-          <s.Form onSubmit={handleSubmit(handleSubmitForm)}>
+          <Form onSubmit={handleSubmit(handleSubmitForm)}>
             <FormFieldBox >
               <Input placeholder="Informe seu Nome" 
                 {...register('name')} 
                 hasErrors={errors.name}/>
-              {errors.name?.message && <p> {errors.name?.message}</p>}
+              <div>
+                {errors.name?.message && <p> {errors.name?.message}</p>}
+              </div>
             </FormFieldBox>
 
             <FormFieldBox>
               <Input placeholder="Informe seu Email: " 
                 {...register('email')}
                 hasErrors={errors.email}/>
-              {errors.email?.message && <p> {errors.email?.message}</p>}
+              <div>
+                {errors.email?.message && <p> {errors.email?.message}</p>}
+              </div>
             </FormFieldBox>
 
             <FormFieldBox>
@@ -55,18 +60,22 @@ export default function Home() {
                 type="number" 
                 {...register('tel')}
                 hasErrors={errors.tel}/>
-              {errors.tel?.message && <p> {errors.tel?.message}</p>}
+              <div>
+                {errors.tel?.message && <p> {errors.tel?.message}</p>}
+              </div>
             </FormFieldBox>
 
             <FormFieldBox>
               <textarea placeholder="Insira sua Mensagem:" 
                 {...register('messageBody')}
                 />
-              {errors.messageBody?.message && <p> {errors.messageBody?.message}</p>}
+              <div>
+                {errors.messageBody?.message && <p> {errors.messageBody?.message}</p>}
+              </div>
             </FormFieldBox>
             <Button type='submit'> Enviar </Button>
 
-          </s.Form>
+          </Form>
         </s.TalkWithUsBanner>
         <s.FaqBanner>
           <h2> FAQ`s </h2>          
