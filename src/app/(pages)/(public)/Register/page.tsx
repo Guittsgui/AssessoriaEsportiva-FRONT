@@ -42,24 +42,29 @@ function Register() {
               {...register('name')}/>
             {errors.name?.message && <p> {errors.name.message}</p>}
           </FormFieldBox>
+
           <FormFieldBox>
             <Input placeholder='Informe seu Email'
               {...register('email')}/>
             {errors.email?.message && <p> {errors.email.message}</p>}
           </FormFieldBox>
+
           <FormFieldBox>
             <Input placeholder='Informe sua Senha:' 
               type='password'
               {...register('password')}/>
             {errors.password?.message && <p> {errors.password.message}</p>}
           </FormFieldBox>
+
           <FormFieldBox>
             <Input placeholder='Confirme sua Senha:' 
               type='password'
               {...register('confirmPassword')}/>
             {errors.confirmPassword?.message && <p> {errors.confirmPassword.message}</p>}
           </FormFieldBox>
+
           <Button type="submit"> Enviar </Button>
+          
         </s.Form>
     </s.PageContainer>
   )
