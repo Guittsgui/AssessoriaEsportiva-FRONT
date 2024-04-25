@@ -20,7 +20,7 @@ function ToastContainer() {
 
       setTimeout(() => {
         setMessages(messages.filter((item) => item.id !== item.id))
-      }, 2000)
+      }, 3000)
       
     })
   },[])

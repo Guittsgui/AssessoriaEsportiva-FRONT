@@ -10,6 +10,8 @@ import z from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from '@/app/components/UI/form'
+import { useToastMessage } from '@/app/hooks/useToastMessage'
+
 
 function Register() {
 
@@ -30,6 +32,7 @@ function Register() {
   })
 
   function handleSubmitRegisterForm(data: registerForm){
+    document.dispatchEvent(useToastMessage("Cadastro Realizado com Sucesso", "success"));
     reset()
   }
 

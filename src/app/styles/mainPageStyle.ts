@@ -76,7 +76,7 @@ export const NumbersBanner = styled.div`
     flex-direction: column;
     align-items: center;
     display: flex;
-    gap: 40px;
+    gap: 30px;
     font-size: 25px;
     .fp{
         font-weight: bolder;
@@ -87,7 +87,7 @@ export const NumbersBanner = styled.div`
     .infos{
         display: flex;
         width: 100%;
-        gap: 50px;
+        gap: 30px;
         justify-content: space-around;
 
         div{
@@ -118,14 +118,20 @@ export const ImageBanner2 = styled.div`
     background-size: cover;
 `
 export const OurSports = styled.div`
-    height: 500px;
+    height: 550px;
+    padding: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 10px;
     h2{
         font-size: 40px;
         margin: 20px;
         color: ${({theme}) => theme.main}
+    }
+    div{
+        display: flex;
+        gap: 30px;
     }
 `
 export const NewsLetterBanner = styled.div`

@@ -15,6 +15,8 @@ import { FormEvent, useState } from 'react';
 import { isEmailValid } from './utils/isEmailValid';
 import Link from 'next/link'
 import { useToastMessage } from './hooks/useToastMessage';
+import SingleSoprtContainer from './components/SingleSportContainer';
+import { sportList } from './utils/sportsList';
 
 
 export default function Home() {
@@ -36,8 +38,7 @@ export default function Home() {
   
 
   function handleSubmitForm(data: emailMessage){
-    alert('passou' + data.name)
-
+    document.dispatchEvent(useToastMessage("Email enviado com Sucesso", "success"));
     reset();
   }
 
@@ -45,9 +46,7 @@ export default function Home() {
     e.preventDefault();
     if(!isEmailValid(emailNewsLetter)){
       setEmailNewsLetter('')
-
-      document.dispatchEvent(useToastMessage("Informe um Email válido", "error"));
-        
+      document.dispatchEvent(useToastMessage("Informe um Email válido", "error"));   
       return
     }else{
       setEmailNewsLetter('')
@@ -99,6 +98,11 @@ export default function Home() {
 
         <s.OurSports>
           <h2> Nossos Esportes </h2>
+          <div>
+            {sportList.map((item,index) => (
+              <SingleSoprtContainer key={index} sport={item}/>
+            ))}
+          </div>
         </s.OurSports>
 
         <s.NewsLetterBanner>
