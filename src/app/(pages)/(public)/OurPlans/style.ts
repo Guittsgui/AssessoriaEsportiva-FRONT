@@ -43,3 +43,39 @@ export const TextContainer = styled.div`
     }
 
 `
+
+export const Nav = styled.nav`
+    width: 800px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px;
+    border: 2px solid;
+    border-color: ${({theme}) => theme.main2};
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px lightgray;
+
+    button{
+        border: 0;
+        background-color: transparent;
+        font-size: 20px;
+        cursor: pointer;
+        font-weight: bolder;
+        color: ${({theme}) => theme.main};
+        font-style: italic;
+        &:hover{
+            border-bottom: 2px solid ;
+            border-color: ${({theme}) => theme.hightlight};
+            padding-bottom: 5px;
+            color: ${({theme}) => theme.hightlight};
+        }
+    }
+
+    .active{
+        border-bottom: 2px solid ;
+        border-color: ${({theme}) => theme.hightlight};
+        padding-bottom: 5px;
+        color: ${({theme}) => theme.hightlight};
+    }
+`

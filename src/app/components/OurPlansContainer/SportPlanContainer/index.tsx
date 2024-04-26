@@ -4,24 +4,29 @@ import * as s from './style'
 
 import React from 'react'
 import { sportList } from '../../../utils/sportsList';
+import { OurPlans } from '@/app/types/PlansTypes';
 
 type props = {
-  title: string,
+  filtredList: any
 }
 
-
-function SportPlanContainer( {title}: props) {
+function SportPlanContainer(props: props) {
   return (
     <s.Container>
         <div className='title'>
-            <h3> {title} </h3>
+            {props.filtredList &&
+              <h3> {props.filtredList.title} </h3>
+            }
         </div>
-        <s.SingleSportsContainer>
-          <SingleSportContainer/>
-          <SingleSportContainer/>
-          <SingleSportContainer/>
-          <SingleSportContainer/>
-        </s.SingleSportsContainer>
+        <s.allSportsContainer>
+          {props.filtredList.plans.map((item: any, index: any) => (
+            <SingleSportContainer 
+              key={index} 
+              benefits={item.benefits}
+              priece={item.value}
+              type ={item.type}/>
+          ))}
+        </s.allSportsContainer>
         
     </s.Container>
   )

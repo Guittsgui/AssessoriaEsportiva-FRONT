@@ -2,10 +2,27 @@
 import SportPlanContainer from '@/app/components/OurPlansContainer/SportPlanContainer'
 import * as s from './style'
 import Link from 'next/link'
-
+import  { useState , useEffect} from 'react'
 import React from 'react'
+import { ourPlanslist } from '@/app/utils/ourPlansList'
+import { OurPlans } from '@/app/types/PlansTypes'
+
 
 function OurPlans() {
+
+  const allPlansList = ourPlanslist;
+  const [filtredList, setFiltredList] = useState<OurPlans[]>();
+
+  useEffect(() => {
+
+    setFiltredList(allPlansList.filter(item => item.title === "Triathlon"))
+    
+  },[])
+
+  function handleChangeListFilter(filter: string){
+    setFiltredList(allPlansList.filter(item => item.title === filter))
+  }
+
   return (
     <s.Container>
       <s.TextContainer>
@@ -18,11 +35,19 @@ function OurPlans() {
           <p>Dúvidas? Acesse nosso <Link href="/">FAQ</Link> .</p>
       </s.TextContainer>
 
-      <SportPlanContainer title="Triathlon"/>
-      <SportPlanContainer title="Corrida"/>
-      <SportPlanContainer title="Natação"/>
-      <SportPlanContainer title="Personal"/>
+      <s.Nav>
+        <button className="active" 
+          onClick={() => handleChangeListFilter("Triathlon")}> 
+            Triathlon 
+        </button>
+        <button onClick={() => handleChangeListFilter("Corrida")}> Corrida</button>
+        <button onClick={() => handleChangeListFilter("Natação")}> Natação </button>
+        <button onClick={() => handleChangeListFilter("Personal")}> Personal</button>
+      </s.Nav>
 
+      {filtredList && 
+        <SportPlanContainer  filtredList={filtredList[0]}/>
+      }
 
     </s.Container>
   )

@@ -1,14 +1,11 @@
 TODO-LIST- Quinta Feira. 
 
 
-5- Finalizar o Layout página Inicial.
-
 
 ////
 6- Criar um ContextAPI para usuário Logado/Login.
 7- Criar pasta API para Requisicoes.
 -- ALTERAR ERROR MSG P/ TOAST.
-
 
 
 ////

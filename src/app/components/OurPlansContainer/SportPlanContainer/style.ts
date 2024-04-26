@@ -24,7 +24,7 @@ export const Container = styled.div`
     }
 `
 
-export const SingleSportsContainer = styled.div`
+export const allSportsContainer = styled.div`
     display: flex;
     padding: 20px;
     gap: 40px;
