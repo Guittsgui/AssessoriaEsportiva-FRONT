@@ -157,7 +157,7 @@ export const OurSports = styled.div`
     }
 `
 export const NewsLetterBanner = styled.div`
-    height: 220px;
+    height: 200px;
     width: 100%;
     border-top: 3px solid;
     border-bottom: 3px solid;
