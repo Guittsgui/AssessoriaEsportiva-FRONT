@@ -14,7 +14,6 @@ export const ImageBanner1 = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
 `
-
 export const WhoWeAre = styled.div`
     height: 500px;
     width: 100%;
