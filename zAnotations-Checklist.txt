@@ -1,6 +1,3 @@
-TODO-LIST- Quinta Feira. 
-
-
 
 ////
 6- Criar um ContextAPI para usuário Logado/Login.

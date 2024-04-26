@@ -1,11 +1,6 @@
 import SingleSportContainer from '../SingleSportContainer'
 import * as s from './style'
-
-
 import React from 'react'
-import { sportList } from '../../../utils/sportsList';
-import { OurPlans } from '@/app/types/PlansTypes';
-
 type props = {
   filtredList: any
 }
