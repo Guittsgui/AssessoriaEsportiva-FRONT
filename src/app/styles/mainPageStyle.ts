@@ -112,10 +112,33 @@ export const NumbersBanner = styled.div`
 `
 export const ImageBanner2 = styled.div`
     width: 100%;
-    height: 300px;
-    background-image: url('https://as2.ftcdn.net/v2/jpg/01/19/90/91/1000_F_119909170_k1868D0DeAsr27ziUM9XfqOSwaTJRBf2.jpg');
+    height: 500px;
+    background-image: url('https://media.trekbikes.com/image/upload/w_1200/16x9_Triathlon_01');
     background-position: center;
     background-size: cover;
+
+    .opacity{
+        height: 500px;
+        background-color: black;
+        opacity: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        div{
+            opacity: 1;
+            z-index: 9999;
+            color: white;
+            
+            h2{
+                font-size: 45px;
+                text-shadow: 2px 2px 2px black;
+            }
+        }
+    }
+
+  
 `
 export const OurSports = styled.div`
     height: 550px;

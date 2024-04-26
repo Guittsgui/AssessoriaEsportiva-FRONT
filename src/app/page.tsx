@@ -94,7 +94,14 @@ export default function Home() {
           </div>
         </s.NumbersBanner>
 
-        <s.ImageBanner2/>
+        <s.ImageBanner2>    
+           <div className="opacity">
+              <div>
+                <h2> Mais de 1.400 Alunos espalhados por todo o País...</h2>
+              </div>
+           </div>
+      
+        </s.ImageBanner2>
 
         <s.OurSports>
           <h2> Nossos Esportes </h2>
