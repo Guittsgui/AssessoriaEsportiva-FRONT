@@ -24,7 +24,7 @@ class HttpClient {
         try{
             const response = await fetch(this.baseURL+path, requestOptions)
             const responseData = await response.json();
-
+            
             const frontResponse = {
                 status: response.status,
                 msg: responseData

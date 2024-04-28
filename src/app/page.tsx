@@ -18,6 +18,7 @@ import { useToastMessage } from './hooks/useToastMessage';
 import SingleSoprtContainer from './components/SingleSportContainer';
 import { sportList } from './utils/sportsList';
 import NewsLetterService from './services/NewsLetterService';
+import ContactEmailService from './services/ContactEmailService';
 
 
 export default function Home() {
@@ -38,10 +39,9 @@ export default function Home() {
 
   
 
-  function handleSubmitForm(data: emailMessage){
-
-    
-    document.dispatchEvent(useToastMessage("Email enviado com Sucesso", "success"));
+  function handleSubmitForm(data: emailMessage){  
+    const response = ContactEmailService.addNewContactEmail(data);
+    // document.dispatchEvent(useToastMessage("Email enviado com Sucesso", "success"));
     reset();
   }
 
@@ -59,7 +59,7 @@ export default function Home() {
       ? document.dispatchEvent(useToastMessage(response.msg.msg, "error")) 
       : document.dispatchEvent(useToastMessage(response.msg.msg,"success"))
 
-
+    setEmailNewsLetter('')
   }
 
   
