@@ -4,11 +4,11 @@ class NewsLetterService {
     HttpClient: HttpClient;
 
     constructor(){
-        this.HttpClient = new HttpClient("vodka");
+        this.HttpClient = new HttpClient("http://localhost:4000");
     }
 
-    addNewsLetter(){
-        return this.HttpClient.get('/');
+    addNewsLetter(email: string){
+        return this.HttpClient.post('/newsletter', {email});
     }
 
     

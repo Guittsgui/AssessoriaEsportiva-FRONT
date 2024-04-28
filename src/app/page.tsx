@@ -17,6 +17,7 @@ import Link from 'next/link'
 import { useToastMessage } from './hooks/useToastMessage';
 import SingleSoprtContainer from './components/SingleSportContainer';
 import { sportList } from './utils/sportsList';
+import NewsLetterService from './services/NewsLetterService';
 
 
 export default function Home() {
@@ -38,22 +39,30 @@ export default function Home() {
   
 
   function handleSubmitForm(data: emailMessage){
+
+    
     document.dispatchEvent(useToastMessage("Email enviado com Sucesso", "success"));
     reset();
   }
 
-  function handleSubmitNewsLetterForm(e: FormEvent){
+  async function handleSubmitNewsLetterForm(e: FormEvent){
     e.preventDefault();
+
     if(!isEmailValid(emailNewsLetter)){
+      document.dispatchEvent(useToastMessage("Informe um email válido", "error"));
       setEmailNewsLetter('')
-      document.dispatchEvent(useToastMessage("Informe um Email válido", "error"));   
-      return
-    }else{
-      setEmailNewsLetter('')
-      document.dispatchEvent(useToastMessage("Cadastrado com Sucessosss", "success"));
+      return;
     }
+    const response = await NewsLetterService.addNewsLetter(emailNewsLetter);
+
+    response.status !== 201 
+      ? document.dispatchEvent(useToastMessage(response.msg.msg, "error")) 
+      : document.dispatchEvent(useToastMessage(response.msg.msg,"success"))
+
 
   }
+
+  
 
   return (
       <s.Container>
