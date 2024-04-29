@@ -12,7 +12,6 @@ class HttpClient {
     }
 
     async post(path: string, data: any){
-
         const requestOptions = {
             method: 'POST',
             headers: {
@@ -23,19 +22,13 @@ class HttpClient {
 
         try{
             const response = await fetch(this.baseURL+path, requestOptions)
-            const responseData = await response.json();
-            
-            const frontResponse = {
-                status: response.status,
-                msg: responseData
-            }
-            return frontResponse
+            const data = await response.json();
+            return {status: response.status, data}
         }catch{
-            const frontResponse = {
-                status: 400,
+            const data = {
                 msg: "Algo deu Errado"
             }
-            return frontResponse
+            return {status: 400, data }
         }
 
     }

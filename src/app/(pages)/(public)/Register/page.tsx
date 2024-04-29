@@ -37,8 +37,8 @@ function Register() {
     const response = await UsersService.addNewUser(data)
 
     response.status !== 201 
-    ? document.dispatchEvent(useToastMessage(response.msg.msg, "error")) 
-    : document.dispatchEvent(useToastMessage(response.msg.msg,"success"))
+    ? document.dispatchEvent(useToastMessage(response.data.msg, "error")) 
+    : document.dispatchEvent(useToastMessage(response.data.msg,"success"))
     reset()
   }
 

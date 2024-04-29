@@ -12,18 +12,9 @@ class UserService{
 
 
     addNewUser(user: User){
-        // user.role = 'USER'
-        // const hashedPassword = Bcrypt.encryptPassword(user.password)
-        // const hashedConfirmPassword = Bcrypt.encryptPassword(user.confirmPassword)
-        
-        // const manipulatedUser = {
-        //     name: user.name,
-        //     email: user.email,
-        //     password: hashedPassword,
-        //     confirmPassword: hashedConfirmPassword,
-        //     role: user.role,
-        // }
-        // return this.HttpClient.post('/user', manipulatedUser);
+        user.role = 'USER'
+    
+        return this.HttpClient.post('/user', user);
     }
 
     validateLogin(email: string, password: string){

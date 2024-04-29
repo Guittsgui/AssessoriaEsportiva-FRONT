@@ -43,8 +43,8 @@ export default function Home() {
     console.log(data)
     const response = await ContactEmailService.addNewContactEmail(data);
       response.status !== 201 
-      ? document.dispatchEvent(useToastMessage(response.msg.msg, "error")) 
-      : document.dispatchEvent(useToastMessage(response.msg.msg,"success"))
+      ? document.dispatchEvent(useToastMessage(response.data.msg, "error")) 
+      : document.dispatchEvent(useToastMessage(response.data.msg,"success"))
     reset();
   }
 
@@ -59,8 +59,8 @@ export default function Home() {
     const response = await NewsLetterService.addNewsLetter(emailNewsLetter);
 
     response.status !== 201 
-      ? document.dispatchEvent(useToastMessage(response.msg.msg, "error")) 
-      : document.dispatchEvent(useToastMessage(response.msg.msg,"success"))
+      ? document.dispatchEvent(useToastMessage(response.data.msg, "error")) 
+      : document.dispatchEvent(useToastMessage(response.data.msg,"success"))
 
     setEmailNewsLetter('')
   }
