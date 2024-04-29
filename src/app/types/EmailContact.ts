@@ -1,6 +1,6 @@
 export type EmailContact = {
     name: string,
     email: string,
-    tel: string,
+    subject: string,
     messageBody: string
 }

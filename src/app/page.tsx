@@ -30,7 +30,7 @@ export default function Home() {
   const talkWithUsFormSchema = z.object({
     name: z.string().min(1 , "Nome Obrigatório"),
     email: z.string().email("Insira um Email Válido").min(1, "Preencha este Campo"),
-    tel: z.string().min(11, "Campo Obrigatório"),
+    subject: z.string().min(1, "Campo Obrigatório"),
     messageBody: z.string().min(10, "Campo obrigatório - Min 10 caracteres.")
   })
   const {handleSubmit, register, formState: {errors}, reset} = useForm<emailMessage>({
@@ -40,19 +40,15 @@ export default function Home() {
   
 
   function handleSubmitForm(data: emailMessage){  
-    const response = ContactEmailService.addNewContactEmail(data);
+    console.log(data)
+    //const response = ContactEmailService.addNewContactEmail(data);
     // document.dispatchEvent(useToastMessage("Email enviado com Sucesso", "success"));
     reset();
   }
 
   async function handleSubmitNewsLetterForm(e: FormEvent){
     e.preventDefault();
-
-    if(!isEmailValid(emailNewsLetter)){
-      document.dispatchEvent(useToastMessage("Informe um email válido", "error"));
-      setEmailNewsLetter('')
-      return;
-    }
+    
     const response = await NewsLetterService.addNewsLetter(emailNewsLetter);
 
     response.status !== 201 
@@ -175,12 +171,11 @@ export default function Home() {
             </FormFieldBox>
 
             <FormFieldBox>
-              <Input placeholder="Informe seu Telefone: " 
-                type="number" 
-                {...register('tel')}
-                hasErrors={errors.tel}/>
+              <Input placeholder="Informe o Assunto: "  
+                {...register('subject')}
+                hasErrors={errors.subject}/>
               <div>
-                {errors.tel?.message && <p> {errors.tel?.message}</p>}
+                {errors.subject?.message && <p> {errors.subject?.message}</p>}
               </div>
             </FormFieldBox>
 
