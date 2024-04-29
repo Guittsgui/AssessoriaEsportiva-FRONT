@@ -1,5 +1,6 @@
 import Bcrypt from "../libs/Bcrypt";
 import { User } from "../types/User";
+import { UserLogin } from "../types/UserLogin";
 import HttpClient from "./utils/HttpClient";
 
 class UserService{
@@ -17,12 +18,9 @@ class UserService{
         return this.HttpClient.post('/user', user);
     }
 
-    validateLogin(email: string, password: string){
-        // const hashedPassword = Bcrypt.encryptPassword(password);
-        // const loginData = {
-        //     email, hashedPassword
-        // }
-        // return this.HttpClient.post('/login', loginData)
+    validateLogin(loginData: UserLogin){;
+        
+        return this.HttpClient.post('/login', loginData)
     }
 
 

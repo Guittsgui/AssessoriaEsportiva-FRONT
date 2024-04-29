@@ -9,6 +9,8 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from '@/app/components/UI/form'
 import { useRouter} from 'next/navigation'
+import UsersService from '@/app/services/UsersService'
+import { useToastMessage } from '@/app/hooks/useToastMessage'
 
 
 function Login() {
@@ -26,8 +28,15 @@ function Login() {
 
   const router = useRouter();
 
-  function handleSubmitLogin(data: loginForm){
-    router.push('/UserHome')
+  async function handleSubmitLogin(data: loginForm){
+    const response = await UsersService.validateLogin(data)
+    if(response.status === 200){
+      router.push('/UserHome')
+      return;
+    }else{
+      document.dispatchEvent(useToastMessage(response.data.msg, "error"))
+    }
+
   }
 
   return (

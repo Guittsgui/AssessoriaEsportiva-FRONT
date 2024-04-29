@@ -35,10 +35,10 @@ function Register() {
   async function handleSubmitRegisterForm( data: registerForm){
 
     const response = await UsersService.addNewUser(data)
-
+    console.log(response.data.msg)
     response.status !== 201 
-    ? document.dispatchEvent(useToastMessage(response.data.msg, "error")) 
-    : document.dispatchEvent(useToastMessage(response.data.msg,"success"))
+      ? document.dispatchEvent(useToastMessage(response.data.msg, "error")) 
+      : document.dispatchEvent(useToastMessage(response.data.msg,"success"))
     reset()
   }
 
