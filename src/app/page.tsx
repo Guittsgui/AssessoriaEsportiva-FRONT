@@ -12,13 +12,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from './components/UI/form';
 import { AiTwotoneMail } from "react-icons/ai";
 import { FormEvent, useState } from 'react';
-import { isEmailValid } from './utils/isEmailValid';
 import Link from 'next/link'
 import { useToastMessage } from './hooks/useToastMessage';
 import SingleSoprtContainer from './components/SingleSportContainer';
 import { sportList } from './utils/sportsList';
 import NewsLetterService from './services/NewsLetterService';
 import ContactEmailService from './services/ContactEmailService';
+import { isEmailValid } from './utils/isEmailValid';
 
 
 export default function Home() {
@@ -39,16 +39,23 @@ export default function Home() {
 
   
 
-  function handleSubmitForm(data: emailMessage){  
+  async function handleSubmitForm(data: emailMessage){  
     console.log(data)
-    //const response = ContactEmailService.addNewContactEmail(data);
-    // document.dispatchEvent(useToastMessage("Email enviado com Sucesso", "success"));
+    const response = await ContactEmailService.addNewContactEmail(data);
+      response.status !== 201 
+      ? document.dispatchEvent(useToastMessage(response.msg.msg, "error")) 
+      : document.dispatchEvent(useToastMessage(response.msg.msg,"success"))
     reset();
   }
 
   async function handleSubmitNewsLetterForm(e: FormEvent){
     e.preventDefault();
-    
+
+    if(!isEmailValid(emailNewsLetter)) {
+      document.dispatchEvent(useToastMessage("Insira um Email Váidx", "error")) 
+      return
+    }
+
     const response = await NewsLetterService.addNewsLetter(emailNewsLetter);
 
     response.status !== 201 
