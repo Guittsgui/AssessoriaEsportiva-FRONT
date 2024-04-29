@@ -3,7 +3,7 @@ import FormFieldBox from '@/app/components/FormFieldBox'
 import * as s from './style'
 
 
-import React from 'react'
+import React, { FormEvent } from 'react'
 import { Input } from '@/app/components/UI/input'
 import { Button } from '@/app/components/UI/button'
 import z from 'zod'
@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from '@/app/components/UI/form'
 import { useToastMessage } from '@/app/hooks/useToastMessage'
+import UsersService from '@/app/services/UsersService'
 
 
 function Register() {
@@ -31,8 +32,13 @@ function Register() {
     resolver: zodResolver(registerSchema)
   })
 
-  function handleSubmitRegisterForm(data: registerForm){
-    document.dispatchEvent(useToastMessage("Cadastro Realizado com Sucesso", "success"));
+  async function handleSubmitRegisterForm( data: registerForm){
+
+    const response = await UsersService.addNewUser(data)
+
+    response.status !== 201 
+    ? document.dispatchEvent(useToastMessage(response.msg.msg, "error")) 
+    : document.dispatchEvent(useToastMessage(response.msg.msg,"success"))
     reset()
   }
 
