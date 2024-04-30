@@ -9,8 +9,9 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from '@/app/components/UI/form'
 import { useRouter} from 'next/navigation'
-import UsersService from '@/app/services/UsersService'
 import { useToastMessage } from '@/app/hooks/useToastMessage'
+
+import { signIn } from 'next-auth/react'
 
 
 function Login() {
@@ -29,13 +30,19 @@ function Login() {
   const router = useRouter();
 
   async function handleSubmitLogin(data: loginForm){
-    const response = await UsersService.validateLogin(data)
-    if(response.status === 200){
-      router.push('/UserHome')
-      return;
-    }else{
-      document.dispatchEvent(useToastMessage(response.data.msg, "error"))
+    const {email, password} = data;
+    const response = await signIn('credentials',{
+      email,
+      password,
+      redirect: false
+    })
+
+    if(response?.status !== 200){
+      document.dispatchEvent(useToastMessage("Algo deu Errado", "error"))
+      reset();
+      return
     }
+    router.replace('/UserHome')
 
   }
 

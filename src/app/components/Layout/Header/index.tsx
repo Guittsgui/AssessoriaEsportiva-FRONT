@@ -5,6 +5,11 @@ import React from 'react'
 import Logo from '../../UI/Logo'
 
 function Header() {
+
+  function handleLogout(){
+    alert('logout')
+  }
+
   return (
     <s.Header>
         <div className="Logo">
@@ -18,6 +23,7 @@ function Header() {
         <div className="LoginArea">
             <Link href="/Login"> Login </Link>
             <Link href="/Register"> Registre-se </Link>
+            <button onClick={handleLogout}> handleLogout</button>
         </div>
     </s.Header>
   )

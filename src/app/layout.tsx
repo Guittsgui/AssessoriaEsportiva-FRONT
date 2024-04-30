@@ -7,6 +7,7 @@ import Footer from "./components/Layout/Footer";
 import { ThemeProvider } from "styled-components";
 import { Theme } from './styles/ThemeProvider';
 import ToastContainer from "./components/Toast/ToastContainer";
+import NextAuthSessionProvider from "./providers/sessionProvider/sessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,12 @@ export default function RootLayout({
       <StyledComponentsRegistry>
         <body className={inter.className} suppressHydrationWarning={true}>
           <ThemeProvider theme={Theme}>
-            <Header/>
-              {children}
-            <Footer/>
-            <ToastContainer/>
+            <NextAuthSessionProvider>
+              <Header/>
+                {children}
+              <Footer/>
+              <ToastContainer/>
+            </NextAuthSessionProvider>
           </ThemeProvider>
         </body>
       </StyledComponentsRegistry>
