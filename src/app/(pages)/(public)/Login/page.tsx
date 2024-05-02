@@ -11,7 +11,7 @@ import { Form } from '@/app/components/UI/form'
 import { useRouter} from 'next/navigation'
 import { useToastMessage } from '@/app/hooks/useToastMessage'
 
-import { signIn } from 'next-auth/react'
+
 
 
 function Login() {
@@ -31,19 +31,8 @@ function Login() {
 
   async function handleSubmitLogin(data: loginForm){
     const {email, password} = data;
-    const response = await signIn('credentials',{
-      email,
-      password,
-      redirect: false
-    })
-
-    if(response?.status !== 200){
-      document.dispatchEvent(useToastMessage("Algo deu Errado", "error"))
-      reset();
-      return
-    }
-    router.replace('/UserHome')
-
+    
+    reset()
   }
 
   return (

@@ -1,23 +1,47 @@
 
-////
-6- Criar um ContextAPI para usuário Logado/Login.
-7- Criar pasta API para Requisicoes.
--- ALTERAR ERROR MSG P/ TOAST.
-
-
-////
-9- BACK - Criar Projeto do BackEnd no gitHub e subir.
-10- BACK -  Configurar Prisma + Tabela Usuário.
-11-  BACK - Criar rotas iniciais da API.
-
-////
-12- Criar menu Dropdown "Minha Conta" - Sair, Configuracoes, etc.
 __________________________________________________________________________________________
 
-////IDEIAS FUTURAS:
+////FUNCIONALIDADES A SEREM IMPLEMENTADAS FUTURAMENTE:
+=> Sistema de Login Protegido e integrado entre API X FRONT.
 
-- ACADEMY- CURSOS.
-- BLOG - Posts/ Novidades.
-- NewsLetter - Email: Salvar.
-- API (tempo?)
-- Minhas Provas Metas , Nome, Data, Local, Contador de DIAS.
+=> Ao Logar, redirecionar para a página correta, sendo USER, sendo ADM.
+
+=> Aluno logar e poder completar suas informacoes caso seja a primeira vez.
+
+=> Usuários poderem Alterar seus dados cadastrais (Password) e excluir Conta. 
+
+=> ADM/Professor poder adicionar um novo post no BLOG.
+
+=> Alunos poderem acessar o blog e deixar comentários.
+
+=> Implementar toda a loja + layout + carrinho + Logar para completar carrinho. (LocalStorage)
+
+=> Professor poder cadastrar novo produto na Loja.
+
+=> Tela de Adicionar Cupom p/ Professores/Etc.
+
+//// ENTIDADES  A SEREM IMPLEMENTADAS.//// 
+
+=> Desafios. 
+->name, cidade, date, userID.
+
+=> healthForm.
+-> Idade, Peso, Objetivo, dataInício, dataPagamento, planValue, medications.
+
+=> Adress.
+-> cep, rua, cidade, bairro, complemento. 
+
+=> Product.
+-> nome, preco, urlImage, sizes[] , descricao, cores[]. 
+
+=> Pedido.
+-> UserID , Adress , valorTotal, valorProduct, valorFrete, valorDesc ,cupomAplicado
+==> DADOSPAGAMENTOS???? -> Estudar gatewayPagamentos -> Como salvar como foi pago.
+
+=> Blog Comentary
+-> ID POST, ID Aluno, Message. 
+
+/// COISAS PARA RESOLVER URGENTEMENTE: 
+=> COMO IRÁ FUNCIONAR A ENTREGA DOS EXERCÍCIOS ENTRE PROFESSOR X ALUNO.
+
+=> POSSÍVEL CONTADOR DE EXERCÍCIOS - Quantos fez ao Ano.???

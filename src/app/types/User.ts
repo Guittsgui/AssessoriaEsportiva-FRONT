@@ -2,8 +2,8 @@ export type User = {
 
     name: string,
     email: string,
-    password: string,
-    confirmPassword: string,
+    password?: string,
+    confirmPassword?: string,
     role?: string
 
 }
