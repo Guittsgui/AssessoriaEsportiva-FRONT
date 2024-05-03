@@ -60,20 +60,31 @@ export const Nav = styled.nav`
     border-bottom: 2px solid black;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    gap: 40px;
     input{
         width: 300px;
     }
 
-    div{
-        
-        
+    .inputContainer{      
         color: ${({theme}) => theme.main};
         display: flex;
         align-items: center;
         justify-content: center;
         .icon{
             margin-left: -40px;
+        }
+    }
+
+    .selectContainer{
+        display: flex;
+        color: ${({theme}) => theme.main};
+        font-style: italic;
+        gap: 10px;
+        select{
+            border-color: ${({theme}) => theme.main};
+            outline: none;
+            color: ${({theme}) => theme.main};
         }
     }
 `

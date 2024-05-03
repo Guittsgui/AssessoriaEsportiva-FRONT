@@ -37,14 +37,17 @@ export const Container = styled.div<props>`
             font-weight: bold;
             font-style: italic;
         }
-        button{
+        a{
             padding: 10px;
             border-radius: 10px;
             border: none;
             background-color: transparent;
             border-bottom: 2px solid;
             border-color: ${({theme}) => theme.hightlight};
-            color: ${({theme}) => theme.main}
+            color: ${({theme}) => theme.main};
+            &:hover{
+                opacity: 50%;
+            }
         }
     }
 

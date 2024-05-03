@@ -4,6 +4,7 @@ import { IProduct } from "../types/IProduct";
 export const productList: IProduct[] = [
 
     {
+        id: 1,
         name: "Camisa de Treino Oficial BLUE",
         priece: 59.90,
         urlImage: "https://loja.comerciomix.com.br/media/catalog/product/cache/fb4f878514d02efd710032ded901d118/c/a/camiseta-azul-royal-para-sublima_o-tradicional_1.jpg",
@@ -11,6 +12,7 @@ export const productList: IProduct[] = [
         category: "t-shirt"
     },
     {
+        id: 2,
         name: "Camisa de Treino Oficial BLACK",
         priece: 59.90,
         urlImage: "https://cdn.awsli.com.br/600x700/1897/1897332/produto/207096638/camiseta-preta-vitseu.jpg",
@@ -18,6 +20,7 @@ export const productList: IProduct[] = [
         category: "t-shirt"
     },
     {
+        id: 3,
         name: "Camisa de Treino Oficial GRAY",
         priece: 59.90,
         urlImage: "https://7219028l.ha.azioncdn.net/img/2023/04/produto/3782/2j0a2979.png?ims=600x900",
@@ -25,6 +28,7 @@ export const productList: IProduct[] = [
         category: "t-shirt"
     },
     {
+        id: 4,
         name: "Camisa de Treino Oficial RED",
         priece: 59.90,
         urlImage: "https://nerdstore.com.br/wp-content/uploads/2022/10/b2b12f0f778cc0a0b1356a8170006c90.jpg",
@@ -32,6 +36,7 @@ export const productList: IProduct[] = [
         category: "t-shirt"
     },
     {
+        id: 5,
         name: "Camisa de Treino Oficial GRAY",
         priece: 59.90,
         urlImage: "https://7219028l.ha.azioncdn.net/img/2023/04/produto/3782/2j0a2979.png?ims=600x900",
@@ -39,6 +44,7 @@ export const productList: IProduct[] = [
         category: "t-shirt"
     },
     {
+        id: 6,
         name: "Bermuda de Corrida",
         priece: 109.90,
         urlImage: "https://acdn.mitiendanube.com/stores/002/155/771/products/121-e2f4bee8af3d80768016869336083174-640-0.png",
@@ -46,6 +52,7 @@ export const productList: IProduct[] = [
         category: "short"
     },
     {
+        id: 7,
         name: "Bermuda de corrida 2",
         priece: 109.90,
         urlImage: "https://a-static.mlcdn.com.br/450x450/bermuda-corrida-6-bolsos-rh-x10-preta-rh-sports/rhsport/22-17419/2f6f57bd80d73c3730c44e86157e75e9.jpeg",
@@ -53,6 +60,7 @@ export const productList: IProduct[] = [
         category: "short"
     },
     {
+        id: 8,
         name: "Boné Oficial",
         priece: 80,
         urlImage: "https://static.netshoes.com.br/produtos/bone-para-corrida-racing-trucker-cap/14/CLW-0239-014/CLW-0239-014_zoom1.jpg?ts=1602843929&ims=544x",
@@ -60,6 +68,7 @@ export const productList: IProduct[] = [
         category: "cap"
     },
     {
+        id: 9,
         name: "Boné Oficial 2",
         priece: 80,
         urlImage: "https://www.eucorredorderua.com.br/blog/wp-content/uploads/2018/09/bone-adidas-correr-melhor.jpg",

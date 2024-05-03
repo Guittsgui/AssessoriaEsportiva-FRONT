@@ -1,12 +1,20 @@
 import * as s from './style'
 import React from 'react'
 import { IProduct } from '@/app/types/IProduct'
+import Link from 'next/link'
 
 type Props = {
   product: IProduct
 }
 
+
+
 function SingleProductContainer({product}: Props) {
+
+  function handleSeeSelectedProduct(){
+    alert(product.id)
+  }
+
   return (
     <s.Container url={product.urlImage}>
         <div className="imageContainer">
@@ -17,7 +25,7 @@ function SingleProductContainer({product}: Props) {
         <div className="infosContainer">
             <p>{product.name}</p>
             <span> R$ {product.priece.toFixed(2)}</span>
-            <button> Detalhes </button>
+            <Link href={`/SingleProduct/${product.id}`}>Detalhes</Link>
         </div>
         
 

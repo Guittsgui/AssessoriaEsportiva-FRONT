@@ -41,19 +41,27 @@ function VirtualStore() {
       </s.Banner> 
 
       <s.Nav>
-        <div>
+        <div className='inputContainer'>
           <Input placeholder='Procurar Item...' 
             value={searchInputValue}
             onChange={handleSearchList}/>
           <CiSearch size={25} className="icon"/>
-
-
         </div>
+
+        <div className="selectContainer">
+          <p>Ordenar por: </p>
+          <select>
+            <option> - </option>
+            <option> Maior Preço </option>
+            <option> Menor Preço </option>
+          </select>
+        </div>
+
       </s.Nav>
       <s.ProductListContainer>
 
         {filtredList.map((item, index)=> (
-          <SingleProductContainer key={index} product={item}/>
+          <SingleProductContainer key={item.id} product={item}/>
         ))}
         
      
