@@ -47,8 +47,8 @@ export const productList: IProduct[] = [
     },
     {
         name: "Bermuda de corrida 2",
-        priece: 59.90,
-        urlImage: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fproduto.mercadolivre.com.br%2FMLB-1316312158-bermuda-de-compresso-masculina-com-bolso-corrida-_JM&psig=AOvVaw2a4xrFY8GZIrKD3PHwX9jR&ust=1714829185015000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOj0v9bK8YUDFQAAAAAdAAAAABAp",
+        priece: 109.90,
+        urlImage: "https://a-static.mlcdn.com.br/450x450/bermuda-corrida-6-bolsos-rh-x10-preta-rh-sports/rhsport/22-17419/2f6f57bd80d73c3730c44e86157e75e9.jpeg",
         description: "A Bermuda Nike Park é uma peça leve essencial para o treino ou a competição. Ela é feita com algodão respirável para ajudar a manter você fresco quando o jogo esquenta",
         category: "short"
     },

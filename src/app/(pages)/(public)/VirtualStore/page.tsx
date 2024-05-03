@@ -2,7 +2,7 @@
 import * as s from './style'
 import { BiCartDownload } from "react-icons/bi";
 import { productList } from '@/app/utils/mockProducts';
-import {useState} from 'react'
+import {ChangeEvent, FormEvent, useState} from 'react'
 import React from 'react'
 import { Input } from '@/app/components/UI/input';
 import { CiSearch } from "react-icons/ci";
@@ -14,6 +14,13 @@ function VirtualStore() {
 
   const [allProducts, setAllProducts] = useState<IProduct[]>(productList);
   const [filtredList, setFiltredList] = useState<IProduct[]>(productList)
+  const [searchInputValue, setSearchInputValue] = useState("")
+
+  function handleSearchList(e: ChangeEvent<HTMLInputElement>){
+     setSearchInputValue(e.target.value)
+     setFiltredList(productList.filter((item) => 
+      item.name.toUpperCase().startsWith(e.target.value.toUpperCase())))
+  }
 
   return (
     <s.Container>
@@ -35,7 +42,9 @@ function VirtualStore() {
 
       <s.Nav>
         <div>
-          <Input placeholder='Procurar Item...'/>
+          <Input placeholder='Procurar Item...' 
+            value={searchInputValue}
+            onChange={handleSearchList}/>
           <CiSearch size={25} className="icon"/>
 
 

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+type props = {
+    url: string | undefined
+}
+
+export const Container = styled.div<props>`
 
     width: 280px;
     margin-top: 20px;
@@ -14,7 +18,7 @@ export const Container = styled.div`
         .image{
             height: 240px;
             width: 100%;
-            background-image: url("https://loja.comerciomix.com.br/media/catalog/product/cache/fb4f878514d02efd710032ded901d118/c/a/camiseta-azul-royal-para-sublima_o-tradicional_1.jpg");
+            background-image: url(${(props) => props.url});
             background-size: cover;
             background-position: center;
             
