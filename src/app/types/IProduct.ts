@@ -5,6 +5,6 @@ export interface IProduct{
     sizes?: string[],
     description: string,
     colors?: string[],
-    category: string[],
+    category: string,
 }
 
