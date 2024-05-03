@@ -23,7 +23,6 @@ function Header() {
         <div className="LoginArea">
             <Link href="/Login"> Login </Link>
             <Link href="/Register"> Registre-se </Link>
-            <button onClick={handleLogout}> handleLogout</button>
         </div>
     </s.Header>
   )

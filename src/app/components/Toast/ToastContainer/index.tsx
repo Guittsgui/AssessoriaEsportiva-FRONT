@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import * as s from './style'
 import ToastMessage from '../ToastMessage'
-import { Message } from '@/app/types/Messages';
+import {IToastMessage} from './../../../types/IToastMessages'
 
 
 function ToastContainer() {
 
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<IToastMessage[]>([]);
 
   useEffect(()=>{
     document.addEventListener('addtoast', (event: any) => {

@@ -1,4 +1,4 @@
-import { User } from "@/app/types/User";
+import { User } from "@/app/types/IUser";
 import { createContext } from "react";
 
 type AuthContextTye = {

@@ -1,6 +1,5 @@
-import Bcrypt from "../libs/Bcrypt";
-import { User } from "../types/User";
-import { UserLogin } from "../types/UserLogin";
+import { IUser } from "../types/IUser";
+import { IUserLoginInfos } from "../types/IUserLoginInfos";
 import HttpClient from "./utils/HttpClient";
 
 class UserService{
@@ -12,13 +11,13 @@ class UserService{
     }
 
 
-    addNewUser(user: User){
+    addNewUser(user: IUser){
         user.role = 'USER'
     
         return this.HttpClient.post('/user', user);
     }
 
-    validateLogin(loginData: UserLogin){;
+    validateLogin(loginData: IUserLoginInfos){;
         
         return this.HttpClient.post('/login', loginData)
     }

@@ -1,4 +1,4 @@
-import { EmailContact } from "../types/EmailContact";
+import { IEmailContact } from "../types/IEmailContact";
 import HttpClient from "./utils/HttpClient";
 class ContactEmailService{
 
@@ -8,7 +8,7 @@ class ContactEmailService{
         this.HttpClient = new HttpClient("http://localhost:4000");
     }
 
-    addNewContactEmail(data: EmailContact){
+    addNewContactEmail(data: IEmailContact){
         return this.HttpClient.post('/emailcontact', data);
     }
 

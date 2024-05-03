@@ -1,4 +1,4 @@
-export type EmailContact = {
+export interface IEmailContact{
     name: string,
     email: string,
     subject: string,
