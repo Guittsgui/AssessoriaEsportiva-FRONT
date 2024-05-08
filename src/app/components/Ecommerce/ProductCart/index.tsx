@@ -1,32 +1,52 @@
 import * as s from './style'
 import { CiTrash } from "react-icons/ci";
+import React, { useContext, useEffect, useState } from 'react'
+import { productList } from '@/app/utils/Mocks/mockProducts';
+import { IProduct } from '@/app/types/IProduct';
+import { ShoppingCartContext } from '@/app/contexts/ShoopingCart.tsx/ShoppinmgCartProvider';
+
+interface Props{
+    itemLine: {
+        productID: number,
+        amount: number,
+        size?: string,
+    }
+}
 
 
-import React from 'react'
+function ProductCart({itemLine}: Props) {
 
-function ProductCart() {
+    const { shoppingCartList,handleRemoveProductToTheCart} = useContext(ShoppingCartContext)
 
     function handleRemoveItem(){
-        alert('Apagou !')
+        if(product?.id){
+            handleRemoveProductToTheCart(product.id)
+        }
+
     }
 
+    useEffect(()=>{
+        setProduct(productList.find((item) => item.id === itemLine.productID));
+    },[shoppingCartList])
+
+    const [product, setProduct] = useState<IProduct | null>();
   return (
     <s.Container>
-        <s.ProductImageAndName>
+        <s.ProductImageAndName urlImage={product?.urlImage}>
             <div className="image">
 
             </div>
             <div className="title">
-                <p>Camiseta Treino Azul</p>
+                <p>{product?.name} + id: {product?.id}</p>
             </div>
         </s.ProductImageAndName>
         <s.ProductSinglePriece>
-            <p> R$ 88.00 </p>
+            <p> R$ {product?.priece.toFixed(2)}</p>
         </s.ProductSinglePriece>
         <s.ProductQuantity>
             <button> - </button>
                 <div className="border">
-                    <p> 15 </p>
+                    <p> {itemLine.amount}</p>
                 </div>
             <button> + </button>
         </s.ProductQuantity>

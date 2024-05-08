@@ -140,3 +140,22 @@ export const Buttons = styled.div`
         }
     }
 `
+
+export const EmptyCart = styled.div`
+
+    border: 2px solid gray;
+    padding: 50px;
+    text-align: center;
+    color: gray;
+    box-shadow: 2px 2px 2px lightgray;
+    p{
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    a{
+        color: ${({theme}) => theme.main};
+        border-bottom: 2px solid ${({theme}) => theme.hightlight};
+    }
+
+`

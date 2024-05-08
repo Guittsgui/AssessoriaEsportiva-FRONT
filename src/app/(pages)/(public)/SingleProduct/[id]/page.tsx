@@ -24,7 +24,9 @@ function SingleProduct({params}: Props) {
   },[])
 
   function handleAddProduct(){
-    handleAddProductToTheCart(5)
+    if(product?.id){
+      handleAddProductToTheCart(product?.id)
+    }
   }
 
   return (

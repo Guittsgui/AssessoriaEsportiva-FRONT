@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+type props = {
+    urlImage : string | undefined | null;
+}
+
 export const Container = styled.div` 
     display: flex;
     border-bottom: 1px solid gray;
@@ -14,7 +18,7 @@ export const Container = styled.div`
 
 `
 
-export const ProductImageAndName = styled.div`
+export const ProductImageAndName = styled.div<props>`
     flex: 2;
     display: flex;
     align-items: center;
@@ -24,7 +28,11 @@ export const ProductImageAndName = styled.div`
     .image{
         height: 100px;
         width: 100px;
-        background-color: blue;
+        border: 1px solid gray;
+        background-image: url(${(props) => props.urlImage});
+        background-size: cover;
+        background-position: center;
+
     }
     .title{
 
