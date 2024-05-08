@@ -22,6 +22,9 @@ export const ShoppingCardProvider = ({children} : {children: JSX.Element}) => {
             productID: product,
             amount: 1
         }
+        ///Se Já existir o ID & o TAMANHO, => alterar o Amount .
+        
+        // Se não existir, adicionar novo item.
         setShoppingCartList([...shoppingCartList, newItem])
     }
 

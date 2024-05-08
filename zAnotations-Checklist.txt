@@ -1,3 +1,9 @@
+=> DropDown Card.
+
+=> Tela Finalizar Compra. (Apenas Logado).
+
+=> Conexao c/ o Back. 
+
 
 __________________________________________________________________________________________
 
