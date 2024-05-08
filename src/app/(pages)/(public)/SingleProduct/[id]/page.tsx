@@ -6,6 +6,7 @@ import { productList } from '../../../../utils/Mocks/mockProducts';
 import Link from 'next/link';
 import Header from '@/app/components/Ecommerce/Header';
 import { ShoppingCartContext } from '@/app/contexts/ShoopingCart.tsx/ShoppinmgCartProvider';
+import { useToastMessage} from '@/app/hooks/useToastMessage';
 
 interface Props {
   params: {
@@ -27,6 +28,7 @@ function SingleProduct({params}: Props) {
     if(product?.id){
       handleAddProductToTheCart(product?.id)
     }
+    document.dispatchEvent(useToastMessage("Produto Adicionado ", "success"))
   }
 
   return (

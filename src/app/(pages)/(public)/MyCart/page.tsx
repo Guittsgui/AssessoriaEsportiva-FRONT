@@ -1,15 +1,37 @@
 "use client"
 import ProductCart from '@/app/components/Ecommerce/ProductCart'
 import * as s from './style'
-
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ShoppingCartContext } from '@/app/contexts/ShoopingCart.tsx/ShoppinmgCartProvider'
+import { productList } from '@/app/utils/Mocks/mockProducts'
+import { IProduct } from '@/app/types/IProduct';
 
 
 function MyCart() {
 
   const {shoppingCartList} = useContext(ShoppingCartContext)
+
+  useEffect(()=>{
+    handleCalculateTotal();
+  },[shoppingCartList])
+
+  const [total, setTotal] = useState<number>();
+
+  function handleCalculateTotal(){
+    let total = 0;
+      if( shoppingCartList){
+        for( let item of shoppingCartList){          
+          const product = productList.find((product) => product.id === item.productID)  
+          if(product){
+            total += product?.priece;
+          }
+        }
+
+        
+      }
+    return total
+  }
 
   return (
 
@@ -43,7 +65,7 @@ function MyCart() {
                    </div>
                    <div className="separate total">
                      <span>TOTAL:</span>
-                     <span>R$ 120.00</span>
+                     <span>R$: {handleCalculateTotal().toFixed(2)}</span>
                    </div>
                    <div  className="cupom">
                      <div className="form">
