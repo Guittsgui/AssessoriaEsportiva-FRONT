@@ -8,6 +8,7 @@ import { ThemeProvider } from "styled-components";
 import { Theme } from './styles/ThemeProvider';
 import ToastContainer from "./components/Toast/ToastContainer";
 import { AuthProvider } from "./contexts/Auth/AuthProvider";
+import { ShoppingCardProvider } from "./contexts/ShoopingCart.tsx/ShoppinmgCartProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,12 +24,14 @@ export default function RootLayout({
         <body className={inter.className} suppressHydrationWarning={true}>
           <ThemeProvider theme={Theme}>
             <AuthProvider> 
-              <>
-                <Header/>
-                  {children}
-                <Footer/>
-                <ToastContainer/>
-              </>
+              <ShoppingCardProvider>
+                <>
+                  <Header/>
+                    {children}
+                  <Footer/>
+                  <ToastContainer/>
+                </>
+              </ShoppingCardProvider>  
             </AuthProvider> 
           </ThemeProvider>
         </body>

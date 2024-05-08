@@ -9,14 +9,13 @@ export const Container = styled.div`
     min-height: 700px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
 
 `
 
 export const productContainer = styled.div<props>`
     width: 1000px;
     height: 600px;
-
     display:flex;
 
     .imageBox{
@@ -45,7 +44,8 @@ export const productContainer = styled.div<props>`
             font-size: 30px;
             color: ${({theme}) => theme.main};
             border-bottom: 4px solid;
-            border-color: ${({theme}) => theme.hightlight}
+            border-color: ${({theme}) => theme.hightlight};
+            text-align: center;
         }
         span{
             font-weight: bolder;
@@ -61,7 +61,7 @@ export const productContainer = styled.div<props>`
             flex-direction: column;
             align-items: center;
         }
-        button{
+        .add{
             padding: 10px;
             border-radius: 20px;
             background-color: transparent;

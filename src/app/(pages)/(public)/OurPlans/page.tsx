@@ -4,7 +4,7 @@ import * as s from './style'
 import Link from 'next/link'
 import  { useState , useEffect} from 'react'
 import React from 'react'
-import { ourPlanslist } from '@/app/utils/ourPlansList'
+import { ourPlanslist } from '@/app/utils/Mocks/ourPlansList'
 import { OurPlans } from '@/app/types/PlansTypes'
 
 
@@ -14,9 +14,7 @@ function OurPlans() {
   const [filtredList, setFiltredList] = useState<OurPlans[]>();
 
   useEffect(() => {
-
     setFiltredList(allPlansList.filter(item => item.title === "Triathlon"))
-    
   },[])
 
   function handleChangeListFilter(filter: string){

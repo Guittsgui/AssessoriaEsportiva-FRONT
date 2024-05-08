@@ -1,13 +1,14 @@
 "use client"
 import * as s from './style'
-import { BiCartDownload } from "react-icons/bi";
-import { productList } from '@/app/utils/mockProducts';
+
+import { productList } from '@/app/utils/Mocks/mockProducts';
 import {ChangeEvent, FormEvent, useState} from 'react'
 import React from 'react'
 import { Input } from '@/app/components/UI/input';
 import { CiSearch } from "react-icons/ci";
 import SingleProductContainer from '@/app/components/Ecommerce/SingleProductContainer';
 import { IProduct } from "../../../types/IProduct";
+import Header from '@/app/components/Ecommerce/Header';
 
 
 function VirtualStore() {
@@ -24,18 +25,8 @@ function VirtualStore() {
 
   return (
     <s.Container>
-      <s.Header>
-        <div>
-          <p>Loja Virtual</p>
-        </div>
-        <div className='counterContainer'>
-          <BiCartDownload size={40}/>
-          <div className='counter'>
-              <span> 01</span>
-          </div>
-        </div>
-      </s.Header> 
 
+      <Header/>
       <s.Banner>
           <h2> Treine estiloso, Treine com os melhores Equipamentos</h2> 
       </s.Banner> 
@@ -58,14 +49,15 @@ function VirtualStore() {
         </div>
 
       </s.Nav>
-      <s.ProductListContainer>
 
+      <s.CounterContainer>
+        <h3> Total Produtos: {filtredList.length}</h3>
+      </s.CounterContainer>
+
+      <s.ProductListContainer>
         {filtredList.map((item, index)=> (
           <SingleProductContainer key={item.id} product={item}/>
         ))}
-        
-     
-
       </s.ProductListContainer>
       <s.PaginationContainer>
         <p> <span>1</span> , 2 , 3 , 4 , 5</p>

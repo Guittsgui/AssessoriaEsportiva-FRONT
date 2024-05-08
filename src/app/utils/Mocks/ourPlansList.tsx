@@ -1,4 +1,4 @@
-import { OurPlans } from "../types/PlansTypes";
+import { OurPlans } from "../../types/PlansTypes";
 
 
 export const ourPlanslist: OurPlans[] = [

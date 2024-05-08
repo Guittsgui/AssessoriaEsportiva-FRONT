@@ -1,9 +1,11 @@
 "use client"
 import { IProduct } from '@/app/types/IProduct';
 import * as s from './style'
-import React, { useEffect, useState } from 'react'
-import { productList } from '../../../../utils/mockProducts';
+import React, { useContext, useEffect, useState } from 'react'
+import { productList } from '../../../../utils/Mocks/mockProducts';
 import Link from 'next/link';
+import Header from '@/app/components/Ecommerce/Header';
+import { ShoppingCartContext } from '@/app/contexts/ShoopingCart.tsx/ShoppinmgCartProvider';
 
 interface Props {
   params: {
@@ -11,15 +13,23 @@ interface Props {
   }
 }
 
+
 function SingleProduct({params}: Props) {
   const [product, setProduct] = useState<IProduct>();
+
+  const {shoppingCartList, handleAddProductToTheCart} = useContext(ShoppingCartContext)
 
   useEffect(() => {
     setProduct(productList.find(item => item.id === parseInt(params.id)))
   },[])
 
+  function handleAddProduct(){
+    handleAddProductToTheCart(5)
+  }
+
   return (
     <s.Container>
+      <Header/>
       <s.productContainer url={product?.urlImage}>
         <div className="imageBox">
           <div className="image"></div>
@@ -29,11 +39,11 @@ function SingleProduct({params}: Props) {
           
           <div className="priece">
               <span>R$: {product?.priece.toFixed(2)}</span>
-              <small> (Parcelamos em até 20x sem Juros) </small>
+              <small> (Em até 10x sem Juros) </small>
           </div>
 
           <p>{product?.description}</p>
-          <button>Adicionar ao Carrinho </button>
+          <button className="add" onClick={handleAddProduct}>Adicionar ao Carrinho </button>
           <Link href="/VirtualStore">Voltar a Loja</Link>
         </div>
       </s.productContainer>

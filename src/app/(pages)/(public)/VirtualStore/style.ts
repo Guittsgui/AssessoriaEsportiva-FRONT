@@ -78,6 +78,7 @@ export const Nav = styled.nav`
 
     .selectContainer{
         display: flex;
+        align-items: center;
         color: ${({theme}) => theme.main};
         font-style: italic;
         gap: 10px;
@@ -85,10 +86,25 @@ export const Nav = styled.nav`
             border-color: ${({theme}) => theme.main};
             outline: none;
             color: ${({theme}) => theme.main};
+            width: 200px;
+            text-align: center;
+            height: 25px;
         }
     }
 `
 
+export const CounterContainer = styled.div`
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h3{
+        color: ${({theme}) => theme.main};
+        font-size: 20px;
+        border-bottom: 2px solid ${({theme}) => theme.hightlight};
+        padding-bottom: 5px;
+    }
+`
 
 export const ProductListContainer = styled.div`
     width: 900px;
@@ -98,6 +114,8 @@ export const ProductListContainer = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+    border-bottom: 2px solid black;
+    padding-bottom: 30px;
 `
 
 export const PaginationContainer = styled.div`

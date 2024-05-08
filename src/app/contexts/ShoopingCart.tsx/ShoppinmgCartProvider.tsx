@@ -1,9 +1,10 @@
 import { IProduct } from "@/app/types/IProduct";
+import { IShoppingCartItem } from "@/app/types/IShoppingCartItem";
 import { createContext, useState } from "react";
 
 type ShoppingCartContext = {
-    products: IProduct[] | null;
-    handleAddProductToTheCart: (product: IProduct) => void
+    shoppingCartList: IShoppingCartItem[] | null;
+    handleAddProductToTheCart: (productID: number) => void
 }
 
 export const ShoppingCartContext = createContext<ShoppingCartContext>(null!);
@@ -14,14 +15,18 @@ export const ShoppingCartContext = createContext<ShoppingCartContext>(null!);
 
 export const ShoppingCardProvider = ({children} : {children: JSX.Element}) => {
 
-    const [products, setProducts] = useState<IProduct[]>([])
+    const [shoppingCartList, setShoppingCartList] = useState<IShoppingCartItem[]>([])
 
-    function handleAddProductToTheCart(product:IProduct){
-        setProducts([...products, product])
+    function handleAddProductToTheCart(product:number){
+        const newItem: IShoppingCartItem = {
+            productID: product,
+            amount: 1
+        }
+        setShoppingCartList([...shoppingCartList, newItem])
     }
 
     return(
-        <ShoppingCartContext.Provider value={{products, handleAddProductToTheCart} }>
+        <ShoppingCartContext.Provider value={{shoppingCartList, handleAddProductToTheCart} }>
             {children}
         </ShoppingCartContext.Provider>
     )

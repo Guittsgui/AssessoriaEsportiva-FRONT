@@ -1,7 +1,7 @@
 "use client"
 import QuestionContainer from './components/QuestionContainer';
 import * as s from './styles/mainPageStyle'
-import { homePageQuestions } from './utils/homeQuestions';
+import { homePageQuestions } from './utils/Mocks/homeQuestions';
 import { Input } from './components/UI/input';
 import { TextArea } from './components/UI/textArea';
 import { Button } from './components/UI/button';
@@ -15,7 +15,7 @@ import { FormEvent, useState } from 'react';
 import Link from 'next/link'
 import { useToastMessage } from './hooks/useToastMessage';
 import SingleSoprtContainer from './components/SingleSportContainer';
-import { sportList } from './utils/sportsList';
+import { sportList } from './utils/Mocks/sportsList';
 import NewsLetterService from './services/NewsLetterService';
 import ContactEmailService from './services/ContactEmailService';
 import { isEmailValid } from './utils/isEmailValid';
