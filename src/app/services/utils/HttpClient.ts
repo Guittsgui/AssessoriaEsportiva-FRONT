@@ -7,8 +7,17 @@ class HttpClient {
         this.baseURL = baseURL;
     }
 
-    get(path: string){
-
+    async get(path: string){
+        try{
+            const response = await fetch(this.baseURL+path)
+            const data = await response.json();
+            return{status: response.status, data}
+        }catch{
+            const data={
+                msg: "Algo deu Errado"
+            }
+            return{status: 400, data}
+        }
     }
 
     async post(path: string, data: any){

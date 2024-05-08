@@ -64,6 +64,8 @@ export const OrderInfos = styled.div`
         border: none;
         font-weight: bolder;
         font-style: italic;
+        font-size: 20px;
+        color: ${({theme}) => theme.main}
     }
 
     .cupom{
@@ -100,7 +102,7 @@ export const OrderInfos = styled.div`
 
         }
         .message{
-            height: 30px;
+            height: 40px;
             text-align: center;
             display: flex;
             align-items: center;
@@ -109,9 +111,65 @@ export const OrderInfos = styled.div`
             font-size: 10px;
             font-weight: bolder;    
             font-style: italic; 
+            border-bottom: 2px solid lightgray;
         }
+
     }
-`
+    .cep{
+        min-height: 60px;
+        display: flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        padding: 10px;
+        small{
+            font-size: 12px;
+            font-weight: bolder;
+            text-align: center;
+        }
+        span{
+            color: gray;
+            margin: 5px;
+            font-weight: bolder;
+        }
+        
+        .form{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        .info{
+            color: gray;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        button{
+            width: 70px;
+            height: 30px;
+            border: 1px solid ${({theme}) => theme.main3};
+            color: ${({theme}) => theme.hightlight};
+            background-color: transparent;
+            box-shadow: 2px 2px 2px gray;
+            &:hover{
+                opacity: 60%;
+            }
+        }  
+        input{
+            color: black;
+            height: 30px;
+            outline: none;
+            padding-left: 5px;
+            border: 1px solid ${({theme}) => theme.main};
+        }  
+    }
+
+
+    `
 
 export const Buttons = styled.div`
     display: flex;

@@ -4,18 +4,33 @@ import * as s from './style'
 import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ShoppingCartContext } from '@/app/contexts/ShoopingCart.tsx/ShoppinmgCartProvider'
-import { productList } from '@/app/utils/Mocks/mockProducts'
-import { IProduct } from '@/app/types/IProduct';
 import Header from '@/app/components/Ecommerce/Header'
+import CepService from '@/app/services/CepService'
 
 
 function MyCart() {
 
   const {shoppingCartList, handleCalculateTotal,total , applyDiscount} = useContext(ShoppingCartContext)
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("")
+  const [cep,setCep] = useState("")
+  const [loading, setLoading] =  useState(false)
+
 
   useEffect(()=>{
     handleCalculateTotal();
   },[shoppingCartList])
+
+  async function handleCalculateFreight(){
+    setLoading(true);
+    const response = await CepService.getCep(25620040)
+    setLoading(false);
+
+    if(response.status === 200){
+      setCity(response.data.localidade)
+      setState(response.data.uf)
+    }
+  }
 
 
   return (
@@ -47,7 +62,7 @@ function MyCart() {
                    </div>
                    <div className="separate">
                      <span>Entrega:</span>
-                     <span>R$ 17.00</span>
+                     <span>Grátis</span>
                    </div>
                    <div className="separate total">
                      <span>TOTAL:</span>
@@ -61,6 +76,20 @@ function MyCart() {
                      <div className="message">
                        <p> Desconto Aplicado: 10% CUPOM: VODKA</p>
                      </div>
+                   </div>
+                   <div className="cep">
+                      <div className="form">
+                        <input type="number" placeholder="Calcular Frete - CEP"/>
+                        <button onClick={handleCalculateFreight}>Calcular</button>
+                      </div>
+                      {loading && <span>CARREGANDO...</span>}
+                      {state !== "" &&
+                          <div className="info">
+                            <p>CIDADE: {city}</p>
+                            <p>ESTADO: {state}</p>
+                            <small>Como o projeto é apenas para fins lucrativos, não estou usando a API de FRETE dos correios, pois ela é paga. Então estou utilizando a de CEP, que o ersultado ficaria praticamente igual.</small>
+                          </div>
+                      }
                    </div>
                  </s.OrderInfos>
                  <s.Buttons>
