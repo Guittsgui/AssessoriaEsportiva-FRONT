@@ -7,10 +7,11 @@ type props = {
 export const Container = styled.div` 
     display: flex;
     border-bottom: 1px solid gray;
-    min-width: 700px;
-    padding: 25px 20px;
-    gap: 10px;
+    min-width: 800px;
     align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
     
     &:last-child{
         border: none;
@@ -22,20 +23,24 @@ export const ProductImageAndName = styled.div<props>`
     flex: 2;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 5px;
 
     .image{
-        height: 100px;
-        width: 100px;
+        flex:1;
+        height: 140px;
+        width: 200px;
         border: 1px solid gray;
         background-image: url(${(props) => props.urlImage});
         background-size: cover;
         background-position: center;
-
     }
     .title{
-
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
 
 `
@@ -46,6 +51,9 @@ export const ProductSinglePriece = styled.div`
     font-size: 18px;
     font-style: italic;
     letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 export const ProductQuantity = styled.div` 
@@ -53,6 +61,7 @@ export const ProductQuantity = styled.div`
     display: flex;
     gap: 10px;
     align-items: center;
+    justify-content: center;
     button{
         height: 20px;
         width: 20px;
@@ -76,6 +85,9 @@ export const ProductsTotalPriece = styled.div`
     font-size: 20px;
     font-weight: bold;
     color: ${({theme}) => theme.main1};
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 `
 
