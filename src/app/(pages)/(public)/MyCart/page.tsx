@@ -17,6 +17,15 @@ function MyCart() {
             <ProductCart/>
             <ProductCart/>
             <ProductCart/>
+            <ProductCart/>
+            <ProductCart/>
+            <ProductCart/>
+            <ProductCart/>
+            <ProductCart/>
+            <ProductCart/>
+            <ProductCart/>
+            <ProductCart/>
+            <ProductCart/>
           </s.ProductsResume>
 
 

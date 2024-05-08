@@ -70,3 +70,15 @@ export const ProductsTotalPriece = styled.div`
     color: ${({theme}) => theme.main1};
 
 `
+
+export const Remove = styled.div`
+    button{
+        border: none;
+        background-color: transparent;
+        color: red;
+        &:hover{
+            opacity: 60%;
+        }
+    }
+    
+`

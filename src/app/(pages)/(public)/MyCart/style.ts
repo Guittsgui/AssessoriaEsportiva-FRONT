@@ -36,7 +36,8 @@ export const OrderResume = styled.div`
 `
 
 export const OrderInfos = styled.div`
-    border: 2px solid black;
+    border: 2px solid lightgray;
+    box-shadow: 2px 2px 2px lightgray;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,7 +50,7 @@ export const OrderInfos = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid lightgray;
     }
     .separate{
         height: 60px;
@@ -105,7 +106,7 @@ export const OrderInfos = styled.div`
             align-items: center;
             justify-content: center;
             color: green;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: bolder;    
             font-style: italic; 
         }
