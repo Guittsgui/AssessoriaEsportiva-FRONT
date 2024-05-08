@@ -7,7 +7,8 @@ import { ShoppingCartContext } from '@/app/contexts/ShoopingCart.tsx/ShoppinmgCa
 
 interface Props{
     itemLine: {
-        productID: number,
+        productID: number | undefined,
+        productPriece: number,
         amount: number,
         size?: string,
     }
@@ -16,13 +17,15 @@ interface Props{
 
 function ProductCart({itemLine}: Props) {
 
-    const { shoppingCartList,handleRemoveProductToTheCart} = useContext(ShoppingCartContext)
+    const { shoppingCartList,
+        handleRemoveProductToTheCart, 
+        handleDecreaseAmount, 
+        handleIncreaseAmount} = useContext(ShoppingCartContext)
 
     function handleRemoveItem(){
         if(product?.id){
             handleRemoveProductToTheCart(product.id)
         }
-
     }
 
     useEffect(()=>{
@@ -37,21 +40,23 @@ function ProductCart({itemLine}: Props) {
 
             </div>
             <div className="title">
-                <p>{product?.name} + id: {product?.id}</p>
+                <p>{product?.name}</p>
             </div>
         </s.ProductImageAndName>
         <s.ProductSinglePriece>
             <p> R$ {product?.priece.toFixed(2)}</p>
         </s.ProductSinglePriece>
         <s.ProductQuantity>
-            <button> - </button>
+            <button onClick={() => handleDecreaseAmount(product?.id)}> - </button>
                 <div className="border">
                     <p> {itemLine.amount}</p>
                 </div>
-            <button> + </button>
+            <button onClick={()=> handleIncreaseAmount(product?.id)}> + </button>  
         </s.ProductQuantity>
         <s.ProductsTotalPriece>
-            <p> R$ 159,90 </p>
+            {product &&
+                <p> R$ {(itemLine.amount * product.priece).toFixed(2)} </p>
+            }
         </s.ProductsTotalPriece>
         <s.Remove>
             <button onClick={handleRemoveItem}><CiTrash size={20} className='logo'/></button>

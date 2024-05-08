@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 function Header() {
 
-  const {shoppingCartList} = useContext(ShoppingCartContext)
+  const {calculateTotalOfItemsInTheCart} = useContext(ShoppingCartContext)
 
   return (
     <s.Header>
@@ -17,7 +17,7 @@ function Header() {
         <div className='counterContainer'>
           <BiCartDownload size={40}/>
           <div className='counter'>
-              <span> {shoppingCartList?.length}</span>
+              <span> {calculateTotalOfItemsInTheCart()}</span>
           </div>
         </div>
     </s.Header>

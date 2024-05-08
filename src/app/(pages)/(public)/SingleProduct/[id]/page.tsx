@@ -25,8 +25,8 @@ function SingleProduct({params}: Props) {
   },[])
 
   function handleAddProduct(){
-    if(product?.id){
-      handleAddProductToTheCart(product?.id)
+    if(product){
+      handleAddProductToTheCart(product)
     }
     document.dispatchEvent(useToastMessage("Produto Adicionado ", "success"))
   }

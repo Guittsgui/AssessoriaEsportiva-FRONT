@@ -6,37 +6,23 @@ import Link from 'next/link'
 import { ShoppingCartContext } from '@/app/contexts/ShoopingCart.tsx/ShoppinmgCartProvider'
 import { productList } from '@/app/utils/Mocks/mockProducts'
 import { IProduct } from '@/app/types/IProduct';
+import Header from '@/app/components/Ecommerce/Header'
 
 
 function MyCart() {
 
-  const {shoppingCartList} = useContext(ShoppingCartContext)
+  const {shoppingCartList, handleCalculateTotal,total , applyDiscount} = useContext(ShoppingCartContext)
 
   useEffect(()=>{
     handleCalculateTotal();
   },[shoppingCartList])
 
-  const [total, setTotal] = useState<number>();
-
-  function handleCalculateTotal(){
-    let total = 0;
-      if( shoppingCartList){
-        for( let item of shoppingCartList){          
-          const product = productList.find((product) => product.id === item.productID)  
-          if(product){
-            total += product?.priece;
-          }
-        }
-
-        
-      }
-    return total
-  }
 
   return (
 
 
     <s.Container>
+      <Header/>
         <s.Title>
           <h1> Meu Carrinho </h1>
         </s.Title>
@@ -65,12 +51,12 @@ function MyCart() {
                    </div>
                    <div className="separate total">
                      <span>TOTAL:</span>
-                     <span>R$: {handleCalculateTotal().toFixed(2)}</span>
+                     <span>R$: {total.toFixed(2)}</span>
                    </div>
                    <div  className="cupom">
                      <div className="form">
                        <input placeholder="Possui Cupom ?"/> 
-                       <button>Aplicar</button>
+                       <button onClick={() => applyDiscount(10)}>Aplicar</button>
                      </div>
                      <div className="message">
                        <p> Desconto Aplicado: 10% CUPOM: VODKA</p>

@@ -4,37 +4,111 @@ import { createContext, useState } from "react";
 
 type ShoppingCartContext = {
     shoppingCartList: IShoppingCartItem[] | null;
-    handleAddProductToTheCart: (productID: number) => void
-    handleRemoveProductToTheCart: (productID: number) => void
+    total: number;
+    handleAddProductToTheCart: (produc: IProduct) => void,
+    handleRemoveProductToTheCart: (productID: number) => void,
+    handleCalculateTotal: () => number;
+    handleDecreaseAmount: (productID: number | undefined ) => void;
+    handleIncreaseAmount: (producID: number | undefined) => void;
+    calculateTotalOfItemsInTheCart: () => number;
+    applyDiscount: (coupom: number) => void;
+
 }
 
 export const ShoppingCartContext = createContext<ShoppingCartContext>(null!);
 
 
-
-
-
 export const ShoppingCardProvider = ({children} : {children: JSX.Element}) => {
 
     const [shoppingCartList, setShoppingCartList] = useState<IShoppingCartItem[]>([])
+    const [total, setTotal] = useState(0);
 
-    function handleAddProductToTheCart(product:number ){
-        const newItem: IShoppingCartItem = {
-            productID: product,
-            amount: 1
+    function handleAddProductToTheCart(product:IProduct ){
+
+        const hasProduct = shoppingCartList.find(item => item.productID === product.id);
+        if(!hasProduct){
+            const newItem: IShoppingCartItem = {
+                productID: product.id,
+                productPriece: product.priece,
+                amount: 1
+            }
+            setShoppingCartList([...shoppingCartList, newItem])
+            return
         }
-        ///Se Já existir o ID & o TAMANHO, => alterar o Amount .
-        
-        // Se não existir, adicionar novo item.
-        setShoppingCartList([...shoppingCartList, newItem])
+        const updatedItems = shoppingCartList.map((item) => {
+            if ( item.productID === product.id){
+                return {...item, amount: item.amount + 1}
+            }
+            return item;
+        })
+        setShoppingCartList(updatedItems)
     }
 
     function handleRemoveProductToTheCart(productID: number){
         setShoppingCartList(shoppingCartList.filter(item => item.productID !== productID))
     }
 
+    function handleCalculateTotal(){
+        let amountTotal = 0;
+        for (let line of shoppingCartList){
+            amountTotal += (line.amount * line.productPriece);
+        }
+        setTotal(amountTotal);
+        return total;
+    }
+
+    function calculateTotalOfItemsInTheCart(){
+        let amountItems = 0;
+        shoppingCartList.map((item) => {
+            amountItems += item.amount
+        })
+        return amountItems;
+    }
+    
+    function handleIncreaseAmount(productID: number | undefined){
+        const updatedItems = shoppingCartList.map((item) => {
+            if( item.productID === productID){
+                return { ...item, amount: item.amount + 1}
+            }
+            return item
+        })
+        setShoppingCartList(updatedItems)
+    }
+
+    function handleDecreaseAmount(productID: number | undefined){
+
+        const updatedItems = shoppingCartList.map((item) => {
+            if( item.productID === productID){
+                if(item.amount > 1){
+                    return { ...item, amount: item.amount - 1} 
+                }
+            }
+            return item
+       
+        })
+
+        setShoppingCartList(updatedItems)
+    }
+
+    function applyDiscount(coupom: number){
+        if(coupom < 0 || coupom > 100){
+            return
+        }
+        const percent = coupom/total * 100;
+        setTotal(total - percent)
+    }
+
     return(
-        <ShoppingCartContext.Provider value={{shoppingCartList, handleAddProductToTheCart, handleRemoveProductToTheCart} }>
+        <ShoppingCartContext.Provider 
+            value={{shoppingCartList, 
+                    total,
+                    handleAddProductToTheCart, 
+                    handleRemoveProductToTheCart,
+                    handleCalculateTotal,
+                    handleIncreaseAmount,
+                    handleDecreaseAmount,
+                    calculateTotalOfItemsInTheCart,
+                    applyDiscount} }>
             {children}
         </ShoppingCartContext.Provider>
     )
