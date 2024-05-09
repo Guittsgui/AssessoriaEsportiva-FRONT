@@ -14,7 +14,10 @@ function MyCart() {
   const [state, setState] = useState("");
   const [city, setCity] = useState("")
   const [cep,setCep] = useState("")
+  const [neighborhood, setNeighborhood] = useState("")
   const [loading, setLoading] =  useState(false)
+  const [error, setError] = useState<string>("");
+  const [coupon, setCoupon] = useState("");
 
 
   useEffect(()=>{
@@ -22,16 +25,44 @@ function MyCart() {
   },[shoppingCartList])
 
   async function handleCalculateFreight(){
+    setError("");
+    setCity("");
+    setState("");
+    setNeighborhood("")
+    setCep("")
+
+    if(cep.length < 8 || cep.length > 8){
+      setError("Informe um cep Válido ")
+      return
+    }
+
     setLoading(true);
-    const response = await CepService.getCep(25620040)
+    const response = await CepService.getCep(cep)
     setLoading(false);
 
     if(response.status === 200){
       setCity(response.data.localidade)
       setState(response.data.uf)
+      setNeighborhood(response.data.bairro)
+      return
     }
+    
   }
 
+  async function handleCheckCoupon(){
+    if(coupon === ""){
+      alert('informe um cupom válido')
+      return
+    }
+    const response =  applyDiscount(coupon)
+    console.log(response)
+
+  }
+
+
+  function handleFinishCart(){
+    alert('finalizou')
+  }
 
   return (
 
@@ -70,8 +101,10 @@ function MyCart() {
                    </div>
                    <div  className="cupom">
                      <div className="form">
-                       <input placeholder="Possui Cupom ?"/> 
-                       <button onClick={() => applyDiscount(10)}>Aplicar</button>
+                       <input placeholder="Possui Cupom ?"
+                        value={coupon}
+                        onChange={(e) => setCoupon(e.target.value)}/> 
+                       <button onClick={handleCheckCoupon}>Aplicar</button>
                      </div>
                      <div className="message">
                        <p> Desconto Aplicado: 10% CUPOM: VODKA</p>
@@ -79,21 +112,27 @@ function MyCart() {
                    </div>
                    <div className="cep">
                       <div className="form">
-                        <input type="number" placeholder="Calcular Frete - CEP"/>
+                        <input 
+                          type="number" 
+                          placeholder="Calcular Frete - CEP"
+                          value={cep}
+                          onChange={(e) => setCep(e.target.value)}/>
                         <button onClick={handleCalculateFreight}>Calcular</button>
                       </div>
                       {loading && <span>CARREGANDO...</span>}
+                      {error !== "" && <span className="error">{error}</span>}
                       {state !== "" &&
                           <div className="info">
                             <p>CIDADE: {city}</p>
                             <p>ESTADO: {state}</p>
-                            <small>Como o projeto é apenas para fins lucrativos, não estou usando a API de FRETE dos correios, pois ela é paga. Então estou utilizando a de CEP, que o ersultado ficaria praticamente igual.</small>
+                            <p>ESTADO: {neighborhood}</p>
+                            <small>Como o projeto é apenas para portifólio, não estou usando a API de FRETE dos correios, pois ela é paga. Então estou utilizando a de CEP, que o ersultado ficaria praticamente igual.</small>
                           </div>
                       }
                    </div>
                  </s.OrderInfos>
                  <s.Buttons>
-                   <Link href="" className="finish"> Finalizar Pedido </Link>
+                   <button className="finish" onClick={handleFinishCart}> Finalizar Pedido </button>
                    <Link href="/VirtualStore" className="return"> Adicionar mais Items </Link>
                  </s.Buttons>
                </s.OrderResume>

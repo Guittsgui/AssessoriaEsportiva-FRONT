@@ -52,7 +52,7 @@ export default function Home() {
     e.preventDefault();
 
     if(!isEmailValid(emailNewsLetter)) {
-      document.dispatchEvent(useToastMessage("Insira um Email Váidx", "error")) 
+      document.dispatchEvent(useToastMessage("Insira um Email Válido", "error")) 
       return
     }
 

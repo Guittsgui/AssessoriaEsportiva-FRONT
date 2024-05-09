@@ -1,3 +1,4 @@
+import DiscountCouponService from "@/app/services/DiscountCouponService";
 import { IProduct } from "@/app/types/IProduct";
 import { IShoppingCartItem } from "@/app/types/IShoppingCartItem";
 import { createContext, useState } from "react";
@@ -11,7 +12,7 @@ type ShoppingCartContext = {
     handleDecreaseAmount: (productID: number | undefined ) => void;
     handleIncreaseAmount: (producID: number | undefined) => void;
     calculateTotalOfItemsInTheCart: () => number;
-    applyDiscount: (coupom: number) => void;
+    applyDiscount: (coupom: string) => void;
 
 }
 
@@ -90,12 +91,14 @@ export const ShoppingCardProvider = ({children} : {children: JSX.Element}) => {
         setShoppingCartList(updatedItems)
     }
 
-    function applyDiscount(coupom: number){
-        if(coupom < 0 || coupom > 100){
-            return
+    async function applyDiscount(coupom: string){
+        const response = await DiscountCouponService.validateCoupon(coupom)
+        let couponDiscount;
+        if(response.status === 200){
+            couponDiscount = await response.data.coupon.discountPercentage;
+            const cartDiscount =  (couponDiscount * total) / 100
+            setTotal(total - cartDiscount);
         }
-        const percent = coupom/total * 100;
-        setTotal(total - percent)
     }
 
     return(

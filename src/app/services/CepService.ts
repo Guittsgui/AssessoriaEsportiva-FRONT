@@ -8,7 +8,7 @@ class CepService{
         this.HttpClient = new HttpClient("https://www.cepcerto.com/ws/json");
     }
 
-    getCep(cep: number){
+    getCep(cep: string){
         return this.HttpClient.get(`/${cep}`);
     }
 

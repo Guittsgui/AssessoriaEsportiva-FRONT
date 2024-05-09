@@ -122,6 +122,11 @@ export const OrderInfos = styled.div`
         align-items:center;
         justify-content:center;
         padding: 10px;
+        .error{
+            color: darkred;
+            font-style: italic;
+            font-size: 15px;
+        }
         small{
             font-size: 12px;
             font-weight: bolder;
@@ -183,6 +188,7 @@ export const Buttons = styled.div`
         color: ${({theme}) => theme.main};
         border: 2px solid ${({theme}) => theme.main};
         padding: 10px 20px;
+        background-color: transparent;
         box-shadow: 2px 2px 2px gray;
         &:hover{
             opacity: 50%;
