@@ -87,7 +87,7 @@ function MyCart() {
 
 
     <s.Container>
-      <Header/>
+        <Header/>
         <s.Title>
           <h1> Meu Carrinho </h1>
         </s.Title>

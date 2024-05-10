@@ -11,10 +11,6 @@ type Props = {
 
 function SingleProductContainer({product}: Props) {
 
-  function handleSeeSelectedProduct(){
-    alert(product.id)
-  }
-
   return (
     <s.Container url={product.urlImage}>
         <div className="imageContainer">
