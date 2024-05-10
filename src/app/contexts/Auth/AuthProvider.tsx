@@ -1,32 +1,38 @@
-import { useState } from "react"
-import { AuthContext } from "./AuthContext"
-import { User } from "@/app/types/IUser";
 import UsersService from "@/app/services/UsersService";
+import { createContext, useContext, useState } from "react";
 
-export const AuthProvider = ({children}: {children: JSX.Element}) => {
+interface AuthContext{
+    hasUser: any,
+    handleValidateLogin: (email:string, password:string) => any
+}
 
-    const [user, setUser] = useState<User | null>(null);
 
-    async function signIn(email:string, password:string){
+
+export const AuthContext = createContext<AuthContext>(null!);
+
+
+export const AuthProver = ({children} : {children: JSX.Element}) => {
+
+    const [hasUser, setHasUser] = useState();
+
+    async function handleValidateLogin(email: string, password: string){
         const data = {
             email,
             password
         }
         const response = await UsersService.validateLogin(data)
-
-        if(response.data.user && response.data.token){
-            setUser(response.data.user)
-            return true
+        if(response.status === 200){
+            setHasUser(response.data.user)
         }
-        return false 
+        return response;
     }
 
-    function signOut(){
-        setUser(null)
+    function handleExecuteLogout(){
+
     }
 
-    return(
-        <AuthContext.Provider value={{user, signIn, signOut}}>
+    return (
+        <AuthContext.Provider value={{hasUser, handleValidateLogin}}>
             {children}
         </AuthContext.Provider>
     )

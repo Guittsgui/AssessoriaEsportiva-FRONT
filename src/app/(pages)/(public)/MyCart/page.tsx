@@ -7,11 +7,14 @@ import { ShoppingCartContext } from '@/app/contexts/ShoopingCart.tsx/ShoppinmgCa
 import Header from '@/app/components/Ecommerce/Header'
 import CepService from '@/app/services/CepService'
 import { useToastMessage } from '@/app/hooks/useToastMessage'
+import { AuthContext } from '@/app/contexts/Auth/AuthProvider'
+import { useRouter} from 'next/navigation'
 
 
 function MyCart() {
 
   const {shoppingCartList, handleCalculateTotal,total , applyDiscount, removeDiscount} = useContext(ShoppingCartContext)
+  const {hasUser} = useContext(AuthContext)
   const [state, setState] = useState("");
   const [city, setCity] = useState("")
   const [cep,setCep] = useState("")
@@ -20,7 +23,7 @@ function MyCart() {
   const [error, setError] = useState<string>("");
   const [coupon, setCoupon] = useState("");
   const [hasCoupon, setHasCoupon] = useState<any>("")
-
+  const router = useRouter();
 
   useEffect(()=>{
     handleCalculateTotal();
@@ -73,7 +76,11 @@ function MyCart() {
 
 
   function handleFinishCart(){
-    alert('finalizou')
+    if(!hasUser){
+      document.dispatchEvent(useToastMessage("Faça o Login p/ Finalizar.", "error")) 
+      return
+    }
+    router.replace('/FinishShopping')
   }
 
   return (

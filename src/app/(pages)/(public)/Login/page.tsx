@@ -1,7 +1,7 @@
 "use client"
 import FormFieldBox from '@/app/components/FormFieldBox'
 import * as s from './style'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Input } from '@/app/components/UI/input'
 import { Button } from '@/app/components/UI/button'
 import z from 'zod'
@@ -10,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from '@/app/components/UI/form'
 import { useRouter} from 'next/navigation'
 import { useToastMessage } from '@/app/hooks/useToastMessage'
-
+import { AuthContext } from '@/app/contexts/Auth/AuthProvider'
 
 
 
@@ -29,9 +29,16 @@ function Login() {
 
   const router = useRouter();
 
+  const authContext = useContext(AuthContext);
+
   async function handleSubmitLogin(data: loginForm){
     const {email, password} = data;
-    
+    const response = await authContext.handleValidateLogin(email,password)
+    if(response.status === 200){
+      router.push('/UserHome')
+      return
+    }
+    document.dispatchEvent(useToastMessage(response.data.msg , "error")) 
     reset()
   }
 

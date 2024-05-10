@@ -3,7 +3,7 @@ import * as s from './style'
 
 import React from 'react'
 
-function FinalizePurchase() {
+function FinishShopping() {
   return (
     <s.Container>
         <h2> Finalizar Compra: </h2>
@@ -11,4 +11,4 @@ function FinalizePurchase() {
   )
 }
 
-export default FinalizePurchase
+export default FinishShopping
