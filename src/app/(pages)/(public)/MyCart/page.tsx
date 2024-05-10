@@ -6,11 +6,12 @@ import Link from 'next/link'
 import { ShoppingCartContext } from '@/app/contexts/ShoopingCart.tsx/ShoppinmgCartProvider'
 import Header from '@/app/components/Ecommerce/Header'
 import CepService from '@/app/services/CepService'
+import { useToastMessage } from '@/app/hooks/useToastMessage'
 
 
 function MyCart() {
 
-  const {shoppingCartList, handleCalculateTotal,total , applyDiscount} = useContext(ShoppingCartContext)
+  const {shoppingCartList, handleCalculateTotal,total , applyDiscount, removeDiscount} = useContext(ShoppingCartContext)
   const [state, setState] = useState("");
   const [city, setCity] = useState("")
   const [cep,setCep] = useState("")
@@ -18,6 +19,7 @@ function MyCart() {
   const [loading, setLoading] =  useState(false)
   const [error, setError] = useState<string>("");
   const [coupon, setCoupon] = useState("");
+  const [hasCoupon, setHasCoupon] = useState<any>("")
 
 
   useEffect(()=>{
@@ -49,14 +51,24 @@ function MyCart() {
     
   }
 
+  function handleRemoveCoupon(){
+    setHasCoupon("")
+    removeDiscount();
+  }
+
   async function handleCheckCoupon(){
+    setCoupon("")
     if(coupon === ""){
-      alert('informe um cupom válido')
+      document.dispatchEvent(useToastMessage("Cupom Inválido.", "error")) 
       return
     }
-    const response =  applyDiscount(coupon)
-    console.log(response)
-
+    const result = await applyDiscount(coupon)
+    if(result.status !== 200){
+      document.dispatchEvent(useToastMessage(result.data.msg , "error")) 
+      return
+    }
+    document.dispatchEvent(useToastMessage("Cupom Aplicado com Sucesso" , "success")) 
+    setHasCoupon(result.data.coupon)
   }
 
 
@@ -89,7 +101,7 @@ function MyCart() {
                    </div>
                    <div className="separate">
                      <span>SubTotal:</span>
-                     <span>R$ 177.00</span>
+                     <span>R$ {total.toFixed(2)}</span>
                    </div>
                    <div className="separate">
                      <span>Entrega:</span>
@@ -104,10 +116,15 @@ function MyCart() {
                        <input placeholder="Possui Cupom ?"
                         value={coupon}
                         onChange={(e) => setCoupon(e.target.value)}/> 
-                       <button onClick={handleCheckCoupon}>Aplicar</button>
+                       <button disabled={hasCoupon} onClick={handleCheckCoupon}>Aplicar</button>
                      </div>
                      <div className="message">
-                       <p> Desconto Aplicado: 10% CUPOM: VODKA</p>
+                       {hasCoupon && 
+                        <>
+                          <p>Cupom {hasCoupon.name} aplicado.</p>
+                          <small onClick={handleRemoveCoupon}> Remover </small>
+                        </>
+                       }
                      </div>
                    </div>
                    <div className="cep">

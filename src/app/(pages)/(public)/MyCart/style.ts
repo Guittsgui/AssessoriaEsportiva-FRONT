@@ -76,6 +76,7 @@ export const OrderInfos = styled.div`
         min-height: 50px;
         width: 100%;
 
+
         .form{
             display:flex;
             align-items: center;
@@ -100,6 +101,14 @@ export const OrderInfos = styled.div`
                 opacity: 60%;
             }
 
+            &:disabled{
+                background-color: gray;
+                opacity: 100%;
+                cursor: not-allowed;
+                color: white;
+                border: black;
+            }
+
         }
         .message{
             height: 40px;
@@ -107,11 +116,19 @@ export const OrderInfos = styled.div`
             display: flex;
             align-items: center;
             justify-content: center;
-            color: green;
-            font-size: 10px;
             font-weight: bolder;    
             font-style: italic; 
             border-bottom: 2px solid lightgray;
+            flex-direction: column;
+            p{
+                color: green;
+                font-size: 12px;
+            }
+            small{
+                color: red;
+                font-size: 10px;
+                cursor: pointer;
+            }
         }
 
     }

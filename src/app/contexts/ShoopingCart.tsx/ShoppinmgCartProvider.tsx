@@ -6,13 +6,15 @@ import { createContext, useState } from "react";
 type ShoppingCartContext = {
     shoppingCartList: IShoppingCartItem[] | null;
     total: number;
+    discountValue: number;
     handleAddProductToTheCart: (produc: IProduct) => void,
     handleRemoveProductToTheCart: (productID: number) => void,
     handleCalculateTotal: () => number;
     handleDecreaseAmount: (productID: number | undefined ) => void;
     handleIncreaseAmount: (producID: number | undefined) => void;
     calculateTotalOfItemsInTheCart: () => number;
-    applyDiscount: (coupom: string) => void;
+    applyDiscount: (coupom: string) => any;
+    removeDiscount: () => void;
 
 }
 
@@ -23,6 +25,7 @@ export const ShoppingCardProvider = ({children} : {children: JSX.Element}) => {
 
     const [shoppingCartList, setShoppingCartList] = useState<IShoppingCartItem[]>([])
     const [total, setTotal] = useState(0);
+    const [discountValue, setDiscountValue] = useState(0)
 
     function handleAddProductToTheCart(product:IProduct ){
 
@@ -96,22 +99,31 @@ export const ShoppingCardProvider = ({children} : {children: JSX.Element}) => {
         let couponDiscount;
         if(response.status === 200){
             couponDiscount = await response.data.coupon.discountPercentage;
-            const cartDiscount =  (couponDiscount * total) / 100
-            setTotal(total - cartDiscount);
+            const discount = (couponDiscount * total) / 100
+            setTotal(total - discount);
+            setDiscountValue(discount)
         }
+        return response;
+    }
+
+    function removeDiscount(){
+        setTotal(total + discountValue)
+        setDiscountValue(0);
     }
 
     return(
         <ShoppingCartContext.Provider 
             value={{shoppingCartList, 
                     total,
+                    discountValue,
                     handleAddProductToTheCart, 
                     handleRemoveProductToTheCart,
                     handleCalculateTotal,
                     handleIncreaseAmount,
                     handleDecreaseAmount,
                     calculateTotalOfItemsInTheCart,
-                    applyDiscount} }>
+                    applyDiscount,
+                    removeDiscount} }>
             {children}
         </ShoppingCartContext.Provider>
     )
