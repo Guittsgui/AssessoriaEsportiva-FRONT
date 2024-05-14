@@ -76,10 +76,6 @@ function MyCart() {
 
 
   function handleFinishCart(){
-    if(!hasUser){
-      document.dispatchEvent(useToastMessage("Faça o Login p/ Finalizar.", "error")) 
-      return
-    }
     router.replace('/FinishShopping')
   }
 
