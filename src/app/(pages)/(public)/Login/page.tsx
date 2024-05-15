@@ -11,6 +11,7 @@ import { Form } from '@/app/components/UI/form'
 import { useRouter} from 'next/navigation'
 import { useToastMessage } from '@/app/hooks/useToastMessage'
 import { AuthContext } from '@/app/contexts/Auth/AuthProvider'
+import { signIn } from 'next-auth/react'
 
 
 
@@ -29,17 +30,19 @@ function Login() {
 
   const router = useRouter();
 
-  const authContext = useContext(AuthContext);
-
   async function handleSubmitLogin(data: loginForm){
     const {email, password} = data;
-    const response = await authContext.handleValidateLogin(email,password)
-    if(response.status === 200){
-      router.push('/UserHome')
+    const response = await signIn('credentials', {
+      email,
+      password,
+      redirect: false
+    })
+    if(response?.ok){
+      router.replace('/UserHome')
       return
     }
-    document.dispatchEvent(useToastMessage(response.data.msg , "error")) 
-    reset()
+    document.dispatchEvent(useToastMessage("Credenciais Inválidas" , "error")) 
+
   }
 
   return (

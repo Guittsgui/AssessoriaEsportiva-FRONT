@@ -9,6 +9,7 @@ import { Theme } from './styles/ThemeProvider';
 import ToastContainer from "./components/Toast/ToastContainer";
 import { ShoppingCardProvider } from "./contexts/ShoopingCart.tsx/ShoppinmgCartProvider";
 import { AuthProver } from "./contexts/Auth/AuthProvider";
+import NextAuthSessionProvider from "./providers/sessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,16 +24,18 @@ export default function RootLayout({
       <StyledComponentsRegistry>
         <body className={inter.className} suppressHydrationWarning={true}>
           <ThemeProvider theme={Theme}>
-            <AuthProver>
-              <ShoppingCardProvider>
-                <>
-                  <Header/>
-                    {children}
-                  <Footer/>
-                  <ToastContainer/>
-                </>
-              </ShoppingCardProvider>  
-            </AuthProver>
+            <NextAuthSessionProvider>
+              <AuthProver>
+                <ShoppingCardProvider>
+                  <>
+                    <Header/>
+                      {children}
+                    <Footer/>
+                    <ToastContainer/>
+                  </>
+                </ShoppingCardProvider>  
+              </AuthProver>
+            </NextAuthSessionProvider>
           </ThemeProvider>
         </body>
       </StyledComponentsRegistry>

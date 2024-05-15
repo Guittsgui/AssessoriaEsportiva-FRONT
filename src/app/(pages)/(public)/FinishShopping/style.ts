@@ -28,7 +28,6 @@ export const Container = styled.div`
     }
 `
 
-
 export const CartContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -66,7 +65,7 @@ export const AdressContainer = styled.div`
     span{
         color: red;
         font-size: 14px;
-        
+
     }
 
     h2{
