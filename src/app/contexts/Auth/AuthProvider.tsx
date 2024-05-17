@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 interface AuthContext{
     hasUser: ReturnedUser | null,
     handleValidateLogin: (email:string, password:string) => any
+    handleExecuteLogout: () => void;
 }
 
 interface ReturnedUser{
@@ -43,7 +44,7 @@ export const AuthProver = ({children} : {children: JSX.Element}) => {
     }
 
     return (
-        <AuthContext.Provider value={{hasUser, handleValidateLogin}}>
+        <AuthContext.Provider value={{hasUser, handleValidateLogin, handleExecuteLogout}}>
             {children}
         </AuthContext.Provider>
     )

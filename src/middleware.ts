@@ -13,14 +13,21 @@ export default function middleware(request: NextRequest){
         return NextResponse.redirect(signInURL)
     }
 
-    if(request.nextUrl.pathname === '/Login'){
-        return NextResponse.redirect(dashBoardURL)
-    }
+   
+
+ 
+    // if(!token){
+
+    //     return NextResponse.redirect(signInURL)
+    // }
+    // if(request.nextUrl.pathname === '/Register'){
+    //     return NextResponse.redirect(dashBoardURL)
+    // }
 
 }
 
 export const config = {
     matcher: [
-        '/UserHome'
+        '/Dashboard',
     ]
 }

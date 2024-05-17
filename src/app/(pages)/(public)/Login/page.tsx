@@ -37,7 +37,7 @@ function Login() {
     const response = await authContext.handleValidateLogin(email, password)
     
     if(response.status === 200){
-      router.replace('/UserHome')
+      router.replace('/Dashboard')
       return
     }
 
