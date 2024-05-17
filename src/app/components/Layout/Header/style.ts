@@ -122,14 +122,37 @@ export const UserHeader = styled.div`
 
 export const Dropdown = styled.div<props>` 
     width: 200px;
-    height: 600px;
+    height: 100vh;
     position: fixed;
     top: 50px;
     background-color: ${({theme}) => theme.main};
     display: ${(props) => props.isMenuOpen ? 'flex' : 'none'};
+    align-items: center;
     flex-direction: column;
     padding: 20px;
+    gap: 20px;
+
+    .avatar{
+        height: 100px;
+        width: 100px;
+        background-image: url('https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png');
+        background-size: cover;
+        background-position: center;
+        border-radius: 50%;
+    }
+    small{
+        color: ${({theme}) => theme.hightlight};
+        text-align: center;
+    }
     
+    p{
+        color: ${({theme}) => theme.hightlight};
+        text-align: center;
+        font-size: 30px;
+    }
+    span{
+        color: white;
+    }
 
     a{
         color: white;

@@ -1,3 +1,4 @@
+import { IChangePasswordData } from "../types/IChangePasswordData";
 import { IUser } from "../types/IUser";
 import { IUserLoginInfos } from "../types/IUserLoginInfos";
 import HttpClient from "./utils/HttpClient";
@@ -20,6 +21,10 @@ class UserService{
     validateLogin(loginData: IUserLoginInfos){;
         
         return this.HttpClient.post('/login', loginData)
+    }
+
+    changePassword(data: IChangePasswordData){
+        return this.HttpClient.post('/', data)
     }
 
 

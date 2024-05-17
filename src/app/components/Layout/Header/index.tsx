@@ -53,11 +53,12 @@ function Header() {
           <button onClick={() => handleLogout()}> Logout </button>
         </s.UserHeader>
         <s.Dropdown isMenuOpen={openMenu}>
-          <Link href='/'> Meus Endereços </Link>
-          <Link href='/'> Meus Exercícios </Link>
-          <Link href='/'> Blog </Link>
-          <Link href='/'> Store </Link>
-          <Link href='/'> Minahs Configuracoes </Link>
+          <p>TRI<span>sport</span>S</p>
+          <div className='userInfos'>
+            <div className="avatar"></div>
+            <small> {authContext.hasUser.name}</small>
+          </div>
+          <Link href='/MyAccount'> Minha Conta </Link>
         </s.Dropdown>
       </>
     )
