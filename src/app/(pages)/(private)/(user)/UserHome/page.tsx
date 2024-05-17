@@ -1,11 +1,15 @@
 "use client"
 import * as s from './style'
-import React from 'react'
+import React, { useEffect } from 'react'
+
 
 function UserHome() {
+
+
+
   return (
     <s.Container>
-        <h1> Olá Usuário Joaozinho da Silva. </h1>
+        <h1>Hello World</h1>
     </s.Container>
   )
 }

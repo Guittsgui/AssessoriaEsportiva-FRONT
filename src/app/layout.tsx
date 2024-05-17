@@ -23,8 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <StyledComponentsRegistry>
         <body className={inter.className} suppressHydrationWarning={true}>
-          <ThemeProvider theme={Theme}>
-            <NextAuthSessionProvider>
+          <ThemeProvider theme={Theme}>     
               <AuthProver>
                 <ShoppingCardProvider>
                   <>
@@ -35,7 +34,6 @@ export default function RootLayout({
                   </>
                 </ShoppingCardProvider>  
               </AuthProver>
-            </NextAuthSessionProvider>
           </ThemeProvider>
         </body>
       </StyledComponentsRegistry>

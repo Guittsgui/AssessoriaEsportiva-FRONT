@@ -1,11 +1,18 @@
 import UsersService from "@/app/services/UsersService";
 import { createContext, useContext, useState } from "react";
+import Cookies from "js-cookie";
 
 interface AuthContext{
-    hasUser: any,
+    hasUser: ReturnedUser | null,
     handleValidateLogin: (email:string, password:string) => any
 }
 
+interface ReturnedUser{
+    id: number,
+    name: string,
+    email: string,
+    role: string
+}
 
 
 export const AuthContext = createContext<AuthContext>(null!);
@@ -13,7 +20,7 @@ export const AuthContext = createContext<AuthContext>(null!);
 
 export const AuthProver = ({children} : {children: JSX.Element}) => {
 
-    const [hasUser, setHasUser] = useState();
+    const [hasUser, setHasUser] = useState(null);
 
     async function handleValidateLogin(email: string, password: string){
         const data = {
@@ -21,14 +28,18 @@ export const AuthProver = ({children} : {children: JSX.Element}) => {
             password
         }
         const response = await UsersService.validateLogin(data)
-        if(response.status === 200){
-            setHasUser(response.data.user)
+        const {user, tokenJwt} = response.data
+        if(response.status === 200 && user && tokenJwt){
+            setHasUser(user)
+            Cookies.set('auth_token_triapp', tokenJwt);
         }
-        return response;
+        return response
+        
     }
 
     function handleExecuteLogout(){
-
+        setHasUser(null)
+        Cookies.remove('auth_token_triapp')
     }
 
     return (
